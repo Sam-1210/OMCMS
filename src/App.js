@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import React, { Component } from "react";
+import { Route, NavLink, HashRouter} from "react-router-dom";
 import './App.css';
+import GlobalHeader from "./components/GlobalHeader.jsx"
+import Home from "./components/home.jsx";
+import Dashboard from "./components/Dashboard.jsx";
+import Tools from "./components/Tools.jsx";
+import About from "./components/About.jsx";
+import Login from "./components/Login.jsx";
+
+
+function MainContainer()
+{
+  return <div>
+    <Route path="/Home" component={Home}/>
+    <Route path="/Dashboard" component={Dashboard}/>
+    <Route path="/Tools" component={Tools}/>
+    <Route path="/About" component={About}/>
+    <Route path="/Login" component={Login}/>
+  </div>;
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <div className="App">
+        <GlobalHeader/>
+        <MainContainer/>
+      </div>
+    </HashRouter>
   );
 }
 
