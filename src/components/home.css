@@ -1,0 +1,70 @@
+#Home
+{
+    display: table;
+    width: 100%;
+    height: 100%;
+    background-image: url("../media/bg_mob.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#Home h1
+{
+    color: rgb(255, 255, 255);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+#Home h4
+{
+    color: rgb(255, 215, 85);
+    text-align: center;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#HomeBody
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    overflow: auto;
+}
+
+#HomeFooter
+{
+    height: 0;
+    overflow: auto;
+}
+
+.BlurBG
+{
+    background-color: rgba(0, 0, 0, 0.164);
+}
+
+@media only screen and (min-width: 768px)
+{
+    #Home
+    {
+        background-image: url("../media/bg1.jpg");
+        background-size: cover;
+    } 
+    #Home h1
+    {
+        color: rgb(255, 255, 255);
+        font-size: 4em;
+    }
+    #Home h4
+    {
+        color: rgb(255, 215, 85);
+    }
+    .BlurBG
+    {
+        background-color: rgba(0, 0, 0, 0);
+    } 
+}

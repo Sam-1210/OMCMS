@@ -1,14 +1,37 @@
 import {NavLink} from "react-router-dom"
 import "./GlobalHeader.css"
-import WebIcon from "../media/WebIcon.png"
+
+function LoginRegMobile()
+{
+    return(
+        <div id="LoginRegMobile">
+            {/* check if user exist, show my account else take to login/reg mobile*/}
+            <NavLink to="/Login" className="NavItem PaneItem">Login</NavLink>
+            <span>|</span>
+            <NavLink to="/Register" className="NavItem PaneItem">Register</NavLink>
+        </div>
+    );
+}
+
+function LoginRegPane()
+{
+    return (
+        <div id="LoginRegPane" className="LoginRegPaneNotVisible">
+            {/* check if user exist, load user palete or show login/reg button */}
+            <div className="PaneHeading">Howdy, Visitor</div>
+            <hr/>
+            <NavLink to="/Login" className="PaneItem">Login</NavLink>
+            <NavLink to="/Register" className="PaneItem">Register</NavLink>
+        </div>
+    );
+}
 
 function GlobalHeader()
 {
-    return <div className="GlobalHeader">
+    return (
+    <div className="GlobalHeader">
         <div id="WebTitle">
-            <div id="HeaderIcon">
-                <img src={WebIcon} id="HeaderImg" alt="Failed to Load Logo"/>
-            </div>
+            <div id="HeaderIcon"></div>
             <div id="HeaderTitle">
                 Online Meetings and Classes<br/>Management System
             </div>
@@ -33,13 +56,19 @@ function GlobalHeader()
             </button>
         </div>
         <div id="GlobalNav" className="WebNav">
-            <div className="NavItem"><NavLink to="/Home" ><input id="NavHome" className="NavButtons" type="button" value="Home" ></input></NavLink></div>
-            <div className="NavItem"><NavLink to="/Dashboard" ><input id="NavDashboard" className="NavButtons" type="button" value="Dashboard" ></input></NavLink></div>
-            <div className="NavItem"><NavLink to="/Tools" ><input id="NavTools" className="NavButtons" type="button" value="Tools" ></input></NavLink></div>
-            <div className="NavItem"><NavLink to="/About" ><input id="NavAbout" className="NavButtons" type="button" value="About" ></input></NavLink></div>
-            <div className="NavItem"><NavLink to="/Login" ><input id="NavUser" className="NavButtons" type="button" value="Login/Register" ></input></NavLink></div>
+            <NavLink to="/Home" className="NavItem">Home</NavLink>
+            <NavLink to="/Dashboard" className="NavItem">Dashboard</NavLink>
+            <NavLink to="/Tools" className="NavItem">Tools</NavLink>
+            <NavLink to="/About" className="NavItem">About</NavLink>
+            <div className="UserIconBG"
+                onMouseEnter= { function(){document.getElementById("LoginRegPane").className = "LoginRegPaneVisible";} }
+                onMouseLeave= { function(){document.getElementById("LoginRegPane").className = "LoginRegPaneNotVisible";} }>
+                <div id="UserIcon"></div>
+                <LoginRegPane/>
+            </div>
+            <LoginRegMobile/>
         </div>
-      </div>;
+    </div>);
 }
 
 export default GlobalHeader;

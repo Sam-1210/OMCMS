@@ -1,4 +1,26 @@
-.App
+html, body
+{
+    height: 100%;
+    overflow: hidden;
+}
+
+#root
 {
     display: block;
+    height: 100%;
+}
+
+.App
+{
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+#PagesContainer
+{
+    display: table-row;
+    overflow: scroll;
+    height: 100%;
+    width: 100%;
 }
