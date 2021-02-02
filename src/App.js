@@ -8,8 +8,6 @@ import About from "./components/About.jsx";
 import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
 
-// ========================================handle mobile menu collpase after button press
-
 function MainContainer()
 {
   return <div id="PagesContainer">

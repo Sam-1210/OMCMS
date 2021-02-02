@@ -93,9 +93,16 @@
 
 .NavItem:hover
 {
-    background-color: rgba(94, 255, 0, 0.315);
+    background-color: rgb(74, 153, 116);
     border-radius: 8px;
     text-decoration: none;
+}
+
+#GlobalNav .active
+{
+    pointer-events: none;
+    border-radius: 8px;
+    background-color: rgba(175, 24, 24, 0.829);
 }
 
 #UserIconBG
@@ -131,6 +138,13 @@
 .PaneItem:visited, .PaneItem:hover, .PaneItem:active
 {
     text-decoration: none;
+}
+
+#LoginRegPane .active
+{
+    pointer-events: none;
+    border-radius: 8px;
+    background-color: rgb(247, 140, 0);
 }
 
 @media only screen and (min-width: 768px)
@@ -242,7 +256,7 @@
 
     .PaneItem:hover
     {
-        background-color: rgb(0, 0, 0);
+        background-color: rgba(223, 182, 0, 0.671);
     }
     .PaneItem:visited, .PaneItem:active
     {
