@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/OMCMS/static/css/main.970e275c.chunk.css",
-    "main.js": "/OMCMS/static/js/main.d64ad007.chunk.js",
-    "main.js.map": "/OMCMS/static/js/main.d64ad007.chunk.js.map",
+    "main.css": "/OMCMS/static/css/main.fb2bd59d.chunk.css",
+    "main.js": "/OMCMS/static/js/main.6d949fd2.chunk.js",
+    "main.js.map": "/OMCMS/static/js/main.6d949fd2.chunk.js.map",
     "runtime-main.js": "/OMCMS/static/js/runtime-main.380f6f5a.js",
     "runtime-main.js.map": "/OMCMS/static/js/runtime-main.380f6f5a.js.map",
     "static/js/2.fc029250.chunk.js": "/OMCMS/static/js/2.fc029250.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.e471c435.chunk.js": "/OMCMS/static/js/3.e471c435.chunk.js",
     "static/js/3.e471c435.chunk.js.map": "/OMCMS/static/js/3.e471c435.chunk.js.map",
     "index.html": "/OMCMS/index.html",
-    "static/css/main.970e275c.chunk.css.map": "/OMCMS/static/css/main.970e275c.chunk.css.map",
+    "static/css/main.fb2bd59d.chunk.css.map": "/OMCMS/static/css/main.fb2bd59d.chunk.css.map",
     "static/js/2.fc029250.chunk.js.LICENSE.txt": "/OMCMS/static/js/2.fc029250.chunk.js.LICENSE.txt",
     "static/media/GlobalHeader.css": "/OMCMS/static/media/userLogo.58ff47a1.png",
     "static/media/home.css": "/OMCMS/static/media/bg_mob.e2e5d806.jpg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.380f6f5a.js",
     "static/js/2.fc029250.chunk.js",
-    "static/css/main.970e275c.chunk.css",
-    "static/js/main.d64ad007.chunk.js"
+    "static/css/main.fb2bd59d.chunk.css",
+    "static/js/main.6d949fd2.chunk.js"
   ]
 }
