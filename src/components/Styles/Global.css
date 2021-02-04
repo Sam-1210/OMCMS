@@ -1,0 +1,41 @@
+.PageHeading
+{
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.CenterText
+{
+    display: block;
+    text-align: center;
+}
+
+.LeftText
+{
+    display: block;
+    text-align: left;
+}
+
+.RightText
+{
+    display: block;
+    text-align: right;
+}
+
+.ColorWhite
+{
+    color: white;
+}
+
+@media only screen and (min-width: 768px)
+{
+    .PageHeading
+    {
+        font-size: 3em;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+}

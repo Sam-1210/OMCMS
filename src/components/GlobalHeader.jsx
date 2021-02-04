@@ -1,5 +1,7 @@
+import React, {useContext} from 'react'
 import {NavLink} from "react-router-dom"
-import "./GlobalHeader.css"
+import { AuthContext } from "./AuthContext.jsx";
+import "./Styles/GlobalHeader.css"
 
 function HandleClick()
 {
@@ -17,30 +19,74 @@ function HandleClick()
         }
 }
 
+function HandleLogRegClick()
+{
+    let LogRegPane = document.getElementById("LoginRegPane");
+        if(LogRegPane.className === "LoginRegPaneVisible")
+        {
+            LogRegPane.className = "LoginRegPaneNotVisible";
+        }
+        else
+        {
+            LogRegPane.className = "LoginRegPaneVisible";
+        }
+}
 
 function LoginRegMobile()
 {
-    return(
+    const {rootState, logoutUser} = useContext(AuthContext);
+    const {isAuth,theUser} = rootState;
+
+    if(isAuth)
+    {
+        return(
         <div id="LoginRegMobile">
-            {/* check if user exist, show my account else take to login/reg mobile*/}
+            <hr/>
+            <div className="NavItem PaneItem">Howdy, {theUser.fname}</div>
+            <div className="NavItem PaneItem">Manage Account</div>
+            <button onClick={function(){logoutUser();  HandleClick();}} className="LogoutButton" >Logout</button>
+        </div>
+        );
+    }
+    else
+    {
+        return(
+        <div id="LoginRegMobile">
             <NavLink to="/Login" className="NavItem PaneItem" onClick={HandleClick}>Login</NavLink>
             <span> | </span>
             <NavLink to="/Register" className="NavItem PaneItem" onClick={HandleClick}>Register</NavLink>
         </div>
-    );
+        );
+    }
 }
 
 function LoginRegPane()
 {
-    return (
-        <div id="LoginRegPane" className="LoginRegPaneNotVisible">
-            {/* check if user exist, load user palete or show login/reg button */}
-            <div className="PaneHeading">Howdy, Visitor</div>
-            <hr/>
-            <NavLink to="/Login" className="PaneItem">Login</NavLink>
-            <NavLink to="/Register" className="PaneItem">Register</NavLink>
-        </div>
-    );
+    const {rootState, logoutUser} = useContext(AuthContext);
+    const {isAuth,theUser} = rootState;
+
+    if(isAuth)
+    {
+        return (
+            <div id="LoginRegPane" className="LoginRegPaneNotVisible">
+                <div className="PaneHeading">Howdy, {theUser.fname}</div>
+                <hr/>
+                <div className="NavItem PaneItem">Manage Account</div>
+                <button onClick={logoutUser} className="LogoutButton">Logout</button>
+            </div>
+        );
+    }
+    else
+    {
+        return (
+            <div id="LoginRegPane" className="LoginRegPaneNotVisible">
+                <div className="PaneHeading">Howdy, Visitor</div>
+                <hr/>
+                <NavLink to="/Login" className="PaneItem" onClick={HandleLogRegClick}>Login</NavLink>
+                <NavLink to="/Register" className="PaneItem" onClick={HandleLogRegClick}>Register</NavLink>
+            </div>
+        );
+    }
 }
 
 function GlobalHeader()
