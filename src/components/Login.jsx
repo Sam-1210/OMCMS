@@ -40,7 +40,6 @@ function Login()
             });
             localStorage.setItem('loginToken', data.token);
             await isLoggedIn();
-            
         }
         else
         {

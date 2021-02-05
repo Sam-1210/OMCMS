@@ -19,16 +19,28 @@ function Register()
     }
     const [state,setState] = useState(initialState);
 
-    const submitForm = async (event) => {
+    const submitForm = async (event) => 
+    {
         event.preventDefault();
         const data = await registerUser(state.userInfo);
-        if(data.success){
+        if(data.success)
+        {
             setState({
                 ...initialState,
                 successMsg:data.message,
             });
+
+            setTimeout(()=>{
+                setState({...initialState, successMsg:'Redirecting in 5 Seconds'})
+            }, 2000);
+            
+            setTimeout(() => {
+                let PageURL = window.location.href;
+                window.location.href = PageURL.replace(PageURL.substr(PageURL.lastIndexOf('/')+1),'Login');
+            }, 5000);
         }
-        else{
+        else
+        {
             setState({
                 ...state,
                 successMsg:'',
@@ -37,7 +49,8 @@ function Register()
         }
     }
 
-    const onChangeValue = (e) => {
+    const onChangeValue = (e) => 
+    {
         setState({
             ...state,
             userInfo:{
@@ -84,8 +97,13 @@ function Register()
                         <input id="RegPassword" className="FormInputBox" name="password" required type="password" value={state.userInfo.password} onChange={onChangeValue} placeholder="Enter your password"/>
                     </div>
                     <div className="InputContainer">
-                        <label htmlFor="RegAuthority" className="FormLabels">Authority</label>
-                        <input id="RegAuthority" className="FormInputBox" name="authority" required type="text" value={state.userInfo.authority} onChange={onChangeValue} placeholder="Enter Designation"/>
+                        <label htmlFor="RegAuthority" className="FormLabels">Category</label>
+                        <select id="RegAuthority" className="FormInputBox" name="authority" defaultValue='' required onChange={onChangeValue}>
+                            <option name='authority' value='' disabled hidden>Choose Your Category</option>
+                            <option name='authority' value='admin'>Institute</option>
+                            <option name='authority' value='staff'>Contributors/Staff</option>
+                            <option name='authority' value='member'>Members/Students</option>
+                        </select>
                     </div>
                     <div className="ButtonHolder">
                         <button id="SubmitRegister" className="ButtonT1" type="submit">SignUp</button>
