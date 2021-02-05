@@ -1,4 +1,4 @@
-#Login
+#Register
 {
     display: flex;
     flex-direction: column;
@@ -7,18 +7,18 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background: rgb(221,33,249);
-    background: radial-gradient(circle, rgba(221,33,249,1) 5%, rgba(8,51,236,1) 100%);
+    background: rgb(255, 255, 255);
+    background: radial-gradient(circle, rgb(255, 255, 255) 5%, rgba(8,51,236,1) 100%);
 }
 
-#LoginBox
+#RegisterBox
 {
-    background-color: rgba(8, 50, 236, 0.418);
+    background-color: rgba(31, 9, 230, 0.342);
     border-radius: 5px;
     width: fit-content;
 }
 
-#LoginUserIcon
+#RegisterUserIcon
 {
     display: block;
     background-image: url("../../media/userLogo.png");
@@ -28,7 +28,7 @@
     height: 80px;
 }
 
-#LoginPageHeading
+#RegisterPageHeading
 {
     display: block;
     text-align: center;
@@ -39,7 +39,7 @@
     margin-bottom: 10px;
 }
 
-#LoginLog
+#RegisterLog
 {
     display: block;
     text-align: center;
@@ -110,7 +110,7 @@
     padding: 5px 10px 5px 10px;
 }
 
-#SubmitLogin
+#SubmitRegister
 {
     font-size: 1em;
     background-color: green;
@@ -118,7 +118,7 @@
     color: rgb(255, 255, 255);
 }
 
-#SwitchRegister
+#SwitchLogin
 {
     display: inline-block;
     font-size: 1em;
@@ -130,17 +130,17 @@
 
 @media only screen and (min-width: 768px)
 {
-    #LoginBox
+    #RegisterBox
     {
         width: 600px;
     }
 
-    #LoginPageHeading
+    #RegisterPageHeading
     {
         font-size: 2em;
     }
 
-    #LoginUserIcon
+    #RegisterUserIcon
     {
         height: 100px;
     }

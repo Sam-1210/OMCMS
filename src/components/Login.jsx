@@ -1,4 +1,5 @@
 import React, {useContext, useState} from 'react'
+import { NavLink } from "react-router-dom";
 import { AuthContext } from './AuthContext.jsx'
 import "./Styles/Global.css"
 import "./Styles/Login.css"
@@ -56,33 +57,37 @@ function Login()
 
     if(state.errorMsg)
     {
-        errorMsg = <div className="error-msg">{state.errorMsg}</div>;
+        errorMsg = <div className="ErrMsgBox">{state.errorMsg}</div>;
     }
     if(state.successMsg)
     {
-        successMsg = <div className="success-msg">{state.successMsg}</div>;
+        successMsg = <div className="ScsMsgBox">{state.successMsg}</div>;
     }
 
     return(
         <div id="Login">
             <div id="LoginBox">
-                <div className="PageHeading">Login</div>
+                <div id="LoginUserIcon"></div>
+                <div id="LoginPageHeading">Login</div>
+                <hr/>
                 <form  onSubmit={submitForm} noValidate>
+                    <div id="LoginLog">
+                        {errorMsg}
+                        {successMsg}
+                    </div>
                     <div className="InputContainer">
                         <label htmlFor="UserEmail" className="FormLabels">Registered Email</label>
-                        <input id="UserEmail" name="email" type="email" required placeholder="Enter Your Email" value={state.userInfo.email} onChange={onChangeValue} />
+                        <input id="UserEmail" className="FormInputBox" name="email" type="email" required placeholder="Enter Your Email" value={state.userInfo.email} onChange={onChangeValue} />
                     </div>
                     <div className="InputContainer">
                         <label htmlFor="UserPassword" className="FormLabels">Password</label>
-                        <input id="UserPassword" name="password" type="password" required placeholder="Enter your password" value={state.userInfo.password} onChange={onChangeValue} />
+                        <input id="UserPassword" className="FormInputBox" name="password" type="password" required placeholder="Enter your password" value={state.userInfo.password} onChange={onChangeValue} />
                     </div>
-                    {errorMsg}
-                    {successMsg}
-                    <div className="InputContainer">
-                        <button type="submit">Sign-In</button>
+                    <div className="ButtonHolder">
+                        <button id="SubmitLogin" className="ButtonT1" type="submit">SignIn</button>
                     </div>
-                    <div className="form-control">
-                        <button>Sign-Up Instead</button>
+                    <div className="ButtonHolder">
+                        <NavLink to="/Register" id="SwitchRegister" className="ButtonT1">SignUp Instead</NavLink>
                     </div>
                 </form>
                 </div>
