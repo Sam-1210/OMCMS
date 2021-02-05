@@ -93,7 +93,7 @@ function GlobalHeader()
 {
     return (
     <div className="GlobalHeader">
-        <div id="WebTitle">
+        <div id="WebTitle" onClick={function() {window.location.href = window.location.href.replace(window.location.href.substr(window.location.href.lastIndexOf('/')+1),'Home');}}>
             <div id="HeaderIcon"></div>
             <div id="HeaderTitle">
                 Online Meetings and Classes<br/>Management System
