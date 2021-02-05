@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.css": "/OMCMS/static/css/main.b5831ca1.chunk.css",
-    "main.js": "/OMCMS/static/js/main.046890e8.chunk.js",
-    "main.js.map": "/OMCMS/static/js/main.046890e8.chunk.js.map",
-    "runtime-main.js": "/OMCMS/static/js/runtime-main.c4714354.js",
-    "runtime-main.js.map": "/OMCMS/static/js/runtime-main.c4714354.js.map",
-    "static/js/2.b35370ff.chunk.js": "/OMCMS/static/js/2.b35370ff.chunk.js",
-    "static/js/2.b35370ff.chunk.js.map": "/OMCMS/static/js/2.b35370ff.chunk.js.map",
-    "static/js/3.8bfbc8f4.chunk.js": "/OMCMS/static/js/3.8bfbc8f4.chunk.js",
-    "static/js/3.8bfbc8f4.chunk.js.map": "/OMCMS/static/js/3.8bfbc8f4.chunk.js.map",
+    "main.css": "/OMCMS/static/css/main.8d4ac7f0.chunk.css",
+    "main.js": "/OMCMS/static/js/main.55535115.chunk.js",
+    "main.js.map": "/OMCMS/static/js/main.55535115.chunk.js.map",
+    "runtime-main.js": "/OMCMS/static/js/runtime-main.6824c97b.js",
+    "runtime-main.js.map": "/OMCMS/static/js/runtime-main.6824c97b.js.map",
+    "static/js/2.e4fa5221.chunk.js": "/OMCMS/static/js/2.e4fa5221.chunk.js",
+    "static/js/2.e4fa5221.chunk.js.map": "/OMCMS/static/js/2.e4fa5221.chunk.js.map",
+    "static/js/3.d93e50b2.chunk.js": "/OMCMS/static/js/3.d93e50b2.chunk.js",
+    "static/js/3.d93e50b2.chunk.js.map": "/OMCMS/static/js/3.d93e50b2.chunk.js.map",
     "index.html": "/OMCMS/index.html",
-    "static/css/main.b5831ca1.chunk.css.map": "/OMCMS/static/css/main.b5831ca1.chunk.css.map",
-    "static/js/2.b35370ff.chunk.js.LICENSE.txt": "/OMCMS/static/js/2.b35370ff.chunk.js.LICENSE.txt",
-    "static/media/GlobalHeader.css": "/OMCMS/static/media/userLogo.58ff47a1.png",
-    "static/media/home.css": "/OMCMS/static/media/bg_mob.e2e5d806.jpg"
+    "static/css/main.8d4ac7f0.chunk.css.map": "/OMCMS/static/css/main.8d4ac7f0.chunk.css.map",
+    "static/js/2.e4fa5221.chunk.js.LICENSE.txt": "/OMCMS/static/js/2.e4fa5221.chunk.js.LICENSE.txt",
+    "static/media/GlobalHeader.css": "/OMCMS/static/media/close.d98e5f5e.png",
+    "static/media/home.css": "/OMCMS/static/media/bg_mob.e2e5d806.jpg",
+    "static/media/Register.css": "/OMCMS/static/media/userLogo.58ff47a1.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.c4714354.js",
-    "static/js/2.b35370ff.chunk.js",
-    "static/css/main.b5831ca1.chunk.css",
-    "static/js/main.046890e8.chunk.js"
+    "static/js/runtime-main.6824c97b.js",
+    "static/js/2.e4fa5221.chunk.js",
+    "static/css/main.8d4ac7f0.chunk.css",
+    "static/js/main.55535115.chunk.js"
   ]
 }
