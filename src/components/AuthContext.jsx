@@ -13,9 +13,13 @@ class AuthContextProvider extends Component{
         theUser:null,
     }
 
-    constructor()
+    /*constructor()
     {
         super();
+    }*/
+
+    componentDidMount()
+    {
         this.isLoggedIn();
     }
 

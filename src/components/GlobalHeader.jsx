@@ -43,7 +43,7 @@ function LoginRegMobile()
         <div id="LoginRegMobile">
             <hr/>
             <div className="NavItem PaneItem">Howdy, {theUser.fname}</div>
-            <div className="NavItem PaneItem">Manage Account</div>
+            <NavLink to="/MyAccount" className="NavItem PaneItem" onClick={HandleClick}>Manage Account</NavLink>
             <button onClick={function(){logoutUser();  HandleClick();}} className="LogoutButton" >Logout</button>
         </div>
         );
@@ -71,7 +71,7 @@ function LoginRegPane()
             <div id="LoginRegPane" className="LoginRegPaneNotVisible">
                 <div className="PaneHeading">Howdy, {theUser.fname}</div>
                 <hr/>
-                <div className="NavItem PaneItem">Manage Account</div>
+                <NavLink to="/MyAccount" className="PaneItem" onClick={HandleLogRegClick}>Manage Account</NavLink>
                 <button onClick={logoutUser} className="LogoutButton">Logout</button>
             </div>
         );
