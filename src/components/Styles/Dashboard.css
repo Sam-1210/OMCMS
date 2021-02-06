@@ -1,0 +1,48 @@
+.DashBoardBodyCommon
+{
+    display: table;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+}
+
+#DashboardAdmin
+{
+    background: rgb(255, 154, 2);
+    background: radial-gradient(circle, rgb(82, 200, 236) 10%, rgb(73, 3, 202) 100%);
+}
+
+#DashboardStaff
+{
+    background: rgb(255, 154, 2);
+    background: radial-gradient(circle, rgb(250, 190, 60) 10%, rgb(247, 107, 14) 100%);
+}
+
+#DashboardMember
+{
+    background: rgb(255, 154, 2);
+    background: radial-gradient(circle, rgb(0, 252, 168) 10%, rgb(0, 90, 78) 100%);
+}
+
+.DashboardHeading
+{
+    font-size: 2em;
+    font-weight: bolder;
+    padding-left: 10px;
+    padding-top: 10px;
+    color: white;
+}
+
+.DashboardContentCommon
+{
+    display: table-row;
+    height: 100%;
+}
+
+@media only screen and (min-width: 768px)
+{
+    .DashboardHeading
+    {
+        font-size: 3em;
+    }
+}
