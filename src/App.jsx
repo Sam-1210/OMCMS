@@ -34,7 +34,7 @@ function MainContainer()
     return <div id="PagesContainer">
       <Route path="/Home" component={Home}/>
       <Route path="/"><Redirect to="/Home" /></Route>
-      <Route path="/Dashboard"><Redirect to="/Login" /></Route>
+      <Route path="/Dashboard" component={DashboardSelector}></Route>
       <Route path="/Tools"><Redirect to="/Login" /></Route>
       <Route path="/About" component={About}/>
       <Route path="/Login" component={Login}/>

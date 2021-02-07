@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import { AuthContext } from "./AuthContext.jsx";
+import Login from "./Login.jsx";
 import DashboardAdmin from "./Dashboards/DasboardAdmin.jsx"
 import DashboardStaff from "./Dashboards/DasboardStaff.jsx"
 import DashboardMember from "./Dashboards/DasboardMember.jsx"
@@ -26,7 +27,7 @@ function DashboardSelector()
             );
         }
     }
-    return (<div><h1>You're not Allowed to Access this Page at The Moment</h1></div>);
+    return (<Login></Login>);
 }
 
 export default DashboardSelector;
