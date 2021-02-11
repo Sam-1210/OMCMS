@@ -35,7 +35,7 @@ function MainContainer()
       <Route path="/Home" component={Home}/>
       <Route path="/"><Redirect to="/Home" /></Route>
       <Route path="/Dashboard" component={DashboardSelector}></Route>
-      <Route path="/Tools"><Redirect to="/Login" /></Route>
+      <Route path="/Tools" component={Tools}/>
       <Route path="/About" component={About}/>
       <Route path="/Login" component={Login}/>
       <Route path="/Register" component={Register}/>

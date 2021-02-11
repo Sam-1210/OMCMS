@@ -8,8 +8,7 @@
 
 #DashboardAdmin
 {
-    background: rgb(255, 154, 2);
-    background: radial-gradient(circle, rgb(82, 200, 236) 10%, rgb(73, 3, 202) 100%);
+    background-image: linear-gradient( 109.6deg,  rgb(0, 3, 1) 11.2%, rgb(3, 82, 85) 91.1% );   
 }
 
 #DashboardStaff
@@ -36,7 +35,17 @@
 .DashboardContentCommon
 {
     display: table-row;
+    text-align: center;
     height: 100%;
+    padding-top: 200px;
+}
+
+#OrgSetupPallete
+{
+    display: inline-block;
+    text-align: center;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
 }
 
 @media only screen and (min-width: 768px)

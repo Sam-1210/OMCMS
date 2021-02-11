@@ -40,10 +40,13 @@ class DashboardAdmin extends Component
         {
             Axios.defaults.headers.common['Authorization'] = 'bearer ' + loginToken;
             const {data}= await Axios.get('Getters/GetStaffInfo.php');
-            this.setState({
-                ...this.state,
-                staff_info:[...data.Payload]
-            });
+            if(data.Payload)
+            {
+                this.setState({
+                    ...this.state,
+                    staff_info:[...data.Payload]
+                });
+            }
         }
     }
 
@@ -120,10 +123,9 @@ class DashboardAdmin extends Component
             <div id="DashboardAdmin" className="DashBoardBodyCommon">
                 <div className="DashboardHeading">Dashboard</div>
                 <div className="DashboardContentCommon">
-                    <div>
-                        Setup Institute
+                    <div id="OrgSetupPallete">
+                        <div>Welcome {this.state.org_name}</div>
                         <form onSubmit={this.submitForm}>
-                            <div>Name : {this.state.org_name}</div>
                             {errorMsg}
                             {successMsg}
                             <label htmlFor="RenOrg">New Name </label>
