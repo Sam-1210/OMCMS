@@ -106,10 +106,10 @@ function Register()
                         </select>
                     </div>
                     <div className="ButtonHolder">
-                        <button id="SubmitRegister" className="ButtonT1" type="submit">SignUp</button>
+                        <button id="SubmitRegister" className="ButtonT1" type="submit">Signup</button>
                     </div>
                     <div className="ButtonHolder">
-                        <NavLink to="/Login" id="SwitchLogin" className="ButtonT1">SignIn Instead</NavLink>
+                        <NavLink to="/Login" id="SwitchLogin" className="ButtonT1">Signin Instead</NavLink>
                     </div>
                 </form>
             </div>

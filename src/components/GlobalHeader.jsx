@@ -5,7 +5,7 @@ import "./Styles/GlobalHeader.css"
 
 function HandleClick()
 {
-    let MenuButton = document.getElementById("MobileNavButton");
+    let MenuButton = document.getElementById("DrawerButton");
     let NavBar = document.getElementById("GlobalNav");
         if(NavBar.className === "WebNav")
         {
@@ -19,9 +19,9 @@ function HandleClick()
         }
 }
 
-function HandleLogRegClick()
+function HandleLogRegClick(ID)
 {
-    let LogRegPane = document.getElementById("LoginRegPane");
+    let LogRegPane = document.getElementById(ID);
         if(LogRegPane.className === "LoginRegPaneVisible")
         {
             LogRegPane.className = "LoginRegPaneNotVisible";
@@ -32,46 +32,19 @@ function HandleLogRegClick()
         }
 }
 
-function LoginRegMobile()
+function LoginRegPane(props)
 {
     const {rootState, logoutUser} = useContext(AuthContext);
     const {isAuth,theUser} = rootState;
-
-    if(isAuth)
-    {
-        return(
-        <div id="LoginRegMobile">
-            <hr/>
-            <div className="NavItem PaneItem">Howdy, {theUser.fname}</div>
-            <NavLink to="/MyAccount" className="NavItem PaneItem" onClick={HandleClick}>Manage Account</NavLink>
-            <button onClick={function(){logoutUser();  HandleClick();}} className="LogoutButton" >Logout</button>
-        </div>
-        );
-    }
-    else
-    {
-        return(
-        <div id="LoginRegMobile">
-            <NavLink to="/Login" className="NavItem PaneItem" onClick={HandleClick}>Login</NavLink>
-            <span> | </span>
-            <NavLink to="/Register" className="NavItem PaneItem" onClick={HandleClick}>Register</NavLink>
-        </div>
-        );
-    }
-}
-
-function LoginRegPane()
-{
-    const {rootState, logoutUser} = useContext(AuthContext);
-    const {isAuth,theUser} = rootState;
+    let id = props.CompId;
 
     if(isAuth)
     {
         return (
-            <div id="LoginRegPane" className="LoginRegPaneNotVisible">
+            <div id={id} className="LoginRegPaneNotVisible">
                 <div className="PaneHeading">Howdy, {theUser.fname}</div>
                 <hr/>
-                <NavLink to="/MyAccount" className="PaneItem" onClick={HandleLogRegClick}>Manage Account</NavLink>
+                <NavLink to="/MyAccount" className="PaneItem" onClick={(e)=>{e.stopPropagation(); HandleLogRegClick(id)}}>Manage Account</NavLink>
                 <button onClick={logoutUser} className="LogoutButton">Logout</button>
             </div>
         );
@@ -79,11 +52,11 @@ function LoginRegPane()
     else
     {
         return (
-            <div id="LoginRegPane" className="LoginRegPaneNotVisible">
+            <div id={id} className="LoginRegPaneNotVisible">
                 <div className="PaneHeading">Howdy, Visitor</div>
                 <hr/>
-                <NavLink to="/Login" className="PaneItem" onClick={HandleLogRegClick}>Login</NavLink>
-                <NavLink to="/Register" className="PaneItem" onClick={HandleLogRegClick}>Register</NavLink>
+                <NavLink to="/Login" className="PaneItem" onClick={(e)=>{ e.stopPropagation(); HandleLogRegClick(id)}}>Login</NavLink>
+                <NavLink to="/Register" className="PaneItem" onClick={(e)=>{ e.stopPropagation(); HandleLogRegClick(id)}}>Register</NavLink>
             </div>
         );
     }
@@ -92,29 +65,31 @@ function LoginRegPane()
 function GlobalHeader()
 {
     return (
-    <div className="GlobalHeader">
+    <div id="GlobalHeader">
+        <div id="MobileDrawer">
+            <button id="DrawerButton" className="MenuButton" onClick={HandleClick}></button>
+        </div>
         <div id="WebTitle" onClick={function() {window.location.href = window.location.href.replace(window.location.href.substr(window.location.href.lastIndexOf('/')+1),'Home');}}>
             <div id="HeaderIcon"></div>
-            <div id="HeaderTitle">
-                Online Meetings and Classes<br/>Management System
-            </div>
-        </div>
-        <div id="MobileNav">
-            <button id="MobileNavButton" className="MenuButton" onClick={HandleClick}>
-            </button>
+            <div id="HeaderTitle">OMCMS</div>
         </div>
         <div id="GlobalNav" className="WebNav">
             <NavLink to="/Home" className="NavItem" onClick={HandleClick}>Home</NavLink>
             <NavLink to="/Dashboard" className="NavItem" onClick={HandleClick}>Dashboard</NavLink>
             <NavLink to="/Tools" className="NavItem" onClick={HandleClick}>Tools</NavLink>
             <NavLink to="/About" className="NavItem" onClick={HandleClick}>About</NavLink>
-            <div className="UserIconBG"
-                onMouseEnter= { function(){document.getElementById("LoginRegPane").className = "LoginRegPaneVisible";} }
-                onMouseLeave= { function(){document.getElementById("LoginRegPane").className = "LoginRegPaneNotVisible";} }>
-                <div id="UserIcon"></div>
-                <LoginRegPane/>
+            <div id="DesktopUser"
+                onMouseEnter= { function(){document.getElementById("LoginRegPaneDesktop").className = "LoginRegPaneVisible";} }
+                onMouseLeave= { function(){document.getElementById("LoginRegPaneDesktop").className = "LoginRegPaneNotVisible";} }>
+                <div className="UserIcon"></div>
+                <LoginRegPane CompId="LoginRegPaneDesktop"/>
             </div>
-            <LoginRegMobile/>
+        </div>
+        <div id="MobileUser" 
+                onClick={ function(){document.getElementById("LoginRegPaneMobile").className = "LoginRegPaneVisible"; } }
+                onMouseLeave= { function(){document.getElementById("LoginRegPaneMobile").className = "LoginRegPaneNotVisible";} }>
+            <div className="UserIcon"></div>
+            <LoginRegPane CompId="LoginRegPaneMobile"/>
         </div>
     </div>);
 }

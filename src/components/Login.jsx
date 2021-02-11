@@ -83,10 +83,10 @@ function Login()
                         <input id="UserPassword" className="FormInputBox" name="password" type="password" required placeholder="Enter your password" value={state.userInfo.password} onChange={onChangeValue} />
                     </div>
                     <div className="ButtonHolder">
-                        <button id="SubmitLogin" className="ButtonT1" type="submit">SignIn</button>
+                        <button id="SubmitLogin" className="ButtonT1" type="submit">Signin</button>
                     </div>
                     <div className="ButtonHolder">
-                        <NavLink to="/Register" id="SwitchRegister" className="ButtonT1">SignUp Instead</NavLink>
+                        <NavLink to="/Register" id="SwitchRegister" className="ButtonT1">Signup Instead</NavLink>
                     </div>
                 </form>
                 </div>

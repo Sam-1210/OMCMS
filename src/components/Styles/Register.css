@@ -112,7 +112,6 @@
 
 .ButtonT1
 {
-    border-radius: 20px;
     border: none;
     outline: none;
     text-align: center;
@@ -122,19 +121,38 @@
 #SubmitRegister
 {
     font-size: 1em;
-    background-color: green;
+    background-image: linear-gradient(to right, #1A2980 0%, #26D0CE  51%, #1A2980  100%);
     width: 170px;
     color: rgb(255, 255, 255);
+    transition: 0.5s;
+    background-size: 200% auto;
+    border-radius: 10px;
 }
+
+#SubmitRegister:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+}
+
 
 #SwitchLogin
 {
     display: inline-block;
     font-size: 1em;
-    background-color: rgb(255, 115, 0);
+    background-image: linear-gradient(to right, #FF512F 0%, #c9045c  51%, #FF512F  100%);
     width: 150px;
     text-decoration: none;
     color: rgb(255, 255, 255);
+    transition: 0.5s;
+    background-size: 200% auto;
+    border-radius: 10px;
+}
+
+ #SwitchLogin:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
 }
 
 @media only screen and (min-width: 768px)
