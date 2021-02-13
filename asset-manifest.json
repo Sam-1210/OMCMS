@@ -1,25 +1,30 @@
 {
   "files": {
-    "main.css": "/OMCMS/static/css/main.d784aa22.chunk.css",
-    "main.js": "/OMCMS/static/js/main.80861ebc.chunk.js",
-    "main.js.map": "/OMCMS/static/js/main.80861ebc.chunk.js.map",
-    "runtime-main.js": "/OMCMS/static/js/runtime-main.6e1c021d.js",
-    "runtime-main.js.map": "/OMCMS/static/js/runtime-main.6e1c021d.js.map",
+    "main.css": "/OMCMS/static/css/main.85d316ff.chunk.css",
+    "main.js": "/OMCMS/static/js/main.ff8f21ff.chunk.js",
+    "main.js.map": "/OMCMS/static/js/main.ff8f21ff.chunk.js.map",
+    "runtime-main.js": "/OMCMS/static/js/runtime-main.79b4d0b3.js",
+    "runtime-main.js.map": "/OMCMS/static/js/runtime-main.79b4d0b3.js.map",
     "static/js/2.46f3880f.chunk.js": "/OMCMS/static/js/2.46f3880f.chunk.js",
     "static/js/2.46f3880f.chunk.js.map": "/OMCMS/static/js/2.46f3880f.chunk.js.map",
-    "static/js/3.0b428340.chunk.js": "/OMCMS/static/js/3.0b428340.chunk.js",
-    "static/js/3.0b428340.chunk.js.map": "/OMCMS/static/js/3.0b428340.chunk.js.map",
+    "static/js/3.94f180ce.chunk.js": "/OMCMS/static/js/3.94f180ce.chunk.js",
+    "static/js/3.94f180ce.chunk.js.map": "/OMCMS/static/js/3.94f180ce.chunk.js.map",
     "index.html": "/OMCMS/index.html",
-    "static/css/main.d784aa22.chunk.css.map": "/OMCMS/static/css/main.d784aa22.chunk.css.map",
+    "static/css/main.85d316ff.chunk.css.map": "/OMCMS/static/css/main.85d316ff.chunk.css.map",
     "static/js/2.46f3880f.chunk.js.LICENSE.txt": "/OMCMS/static/js/2.46f3880f.chunk.js.LICENSE.txt",
-    "static/media/GlobalHeader.css": "/OMCMS/static/media/WebIcon.f33f07bd.png",
-    "static/media/home.css": "/OMCMS/static/media/bg_mob.e2e5d806.jpg",
-    "static/media/Register.css": "/OMCMS/static/media/userLogo.58ff47a1.png"
+    "static/media/Login.css": "/OMCMS/static/media/login-mobile.d760eee0.jpg",
+    "static/media/GlobalHeader.css": "/OMCMS/static/media/hamburger.93070b0a.png",
+    "static/media/About.css": "/OMCMS/static/media/about-mobile.e5e4b179.jpg",
+    "static/media/Dashboard.css": "/OMCMS/static/media/dashboard-staff-mobile.0efaa2b4.jpg",
+    "static/media/home.css": "/OMCMS/static/media/home_mobile.33aea45f.jpg",
+    "static/media/MyAccount.css": "/OMCMS/static/media/my-account-mobile.e325d7b2.jpg",
+    "static/media/Register.css": "/OMCMS/static/media/userLogo.58ff47a1.png",
+    "static/media/Tools.css": "/OMCMS/static/media/tools-mobile.94670eb7.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.6e1c021d.js",
+    "static/js/runtime-main.79b4d0b3.js",
     "static/js/2.46f3880f.chunk.js",
-    "static/css/main.d784aa22.chunk.css",
-    "static/js/main.80861ebc.chunk.js"
+    "static/css/main.85d316ff.chunk.css",
+    "static/js/main.ff8f21ff.chunk.js"
   ]
 }
