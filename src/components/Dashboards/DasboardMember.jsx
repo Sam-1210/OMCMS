@@ -8,7 +8,7 @@ function DashboardMember()
 
     return (
     <div id="DashboardMember" className="DashBoardBodyCommon">
-        <div className="DashboardHeading">Dashboard</div>
+        <div className="ContentHeading">Dashboard</div>
         <div className="DashboardContentCommon"></div>
     </div>);
 }

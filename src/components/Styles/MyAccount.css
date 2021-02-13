@@ -1,0 +1,40 @@
+#MyAccount
+{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: white;
+    background-position: center;
+    background-size: 100% 60%;
+    background-repeat: no-repeat;
+    background-image: url("../../media/Arts/my-account-mobile.jpg");
+}
+
+@media (prefers-color-scheme: dark) 
+{
+    #MyAccount
+    {
+        background-color: rgb(25, 25, 25);
+        background-image: url("../../media/Arts/my-account-mobile-dark.jpg");
+    }
+}
+
+@media only screen and (min-width: 768px)
+{
+    #MyAccount
+    {
+        background-color: rgb(255, 255, 255);
+        background-size: contain;
+        background-image: url("../../media/Arts/my-account-desktop.jpg");
+
+    }
+
+    @media (prefers-color-scheme: dark) 
+    {
+        #MyAccount
+        {
+            background-color: rgb(25, 25, 25);
+            background-image: url("../../media/Arts/my-account-desktop-dark.jpg");
+        }
+    }
+}

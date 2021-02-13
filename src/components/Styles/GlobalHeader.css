@@ -4,8 +4,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between; 
-    background-color: rgb(0, 55, 77);
-    color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
 /*-------------------------------------------------Mobile Drawer Button------------------------------------------------------------*/
@@ -27,13 +27,13 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 
 .MenuButtonClicked
 {
-    background-image: url("../../media/close.png");
+    background-image: url("../../media/hamburger-close.png");
 }
 
 /*-------------------------------------------Header Title------------------------------------------------------*/
@@ -67,21 +67,35 @@
 }
 
 /*-----------------------------------------------Navigation--------------------------------------------------------*/
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        transform: translateX(-200px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
 .WebNav
 {
     display: none;
     position: absolute;
     z-index: 3; 
-    top: 85px;
+    top: 83px;
     height: 100%;
-    width: 40%;
-    padding-top: 50px;
+    width: 50%;
     min-width: fit-content;
+    padding-top: 50px; 
     justify-content: center;
     flex-direction: column;
-    background-color: rgba(41, 41, 41, 0.432);
+    background-color: rgba(255, 255, 255, 0.664);
     backdrop-filter: blur(5px);
     border-radius: 0px 0px 5px 5px;
+    animation: slide-in 0.4s ease-out;
+    word-wrap: break-word;
+    overflow: auto;
 }
 
 .MobileMenu
@@ -94,7 +108,7 @@
     display: block;
     text-align: center;
     font-size: large;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     text-decoration: none;
     padding-left: 20px;
     padding-right: 20px;
@@ -105,6 +119,7 @@
 .NavItem:hover
 {
     background-color: rgb(74, 153, 116);
+    color:white;
     border-radius: 8px;
     text-decoration: none;
 }
@@ -114,9 +129,21 @@
     pointer-events: none;
     border-radius: 8px;
     background-color: rgba(175, 24, 24, 0.829);
+    color: white;
 }
 
 /*-----------------------------------------------User--------------------------------------------------------------------*/
+@keyframes slide-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
 #DesktopUser
 {
     display: none;
@@ -128,23 +155,19 @@
     order: 2;
     margin-right: 20px;
     text-align: center;
+    height: 80px;
 }
 
 .UserIcon
 {
-    background-image: url("../../media/userLogo.png");
+    background-image: url("../../media/UserLogo1.png");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
     width: 50px;
     height: 50px;
+    margin: 15px 0px 15px 0px; /*force aligning user icon as parent is not flex unlike case of dekstop*/
 }
-
-.UserIconBG
-{
-    display: inline-block;
-}
-
 
 #LoginRegPaneMobile
 {
@@ -152,8 +175,9 @@
     background-color: rgba(0, 0, 0, 0.699);
     border-radius: 5px 5px 5px 5px;
     width: 200px;
-    top: 85px;
+    top: 80px;
     right: 10px;
+    animation: slide-down 0.4s ease-out;
 }
 
 .LoginRegPaneNotVisible
@@ -169,6 +193,7 @@
 .PaneHeading
 {
     font-size: 1.5em;
+    color:white;
 }
 
 .PaneItem
@@ -227,6 +252,36 @@
     text-decoration: none;
 }
 
+/*===================================================DarkMode=================================================================*/
+
+@media (prefers-color-scheme: dark) {
+    #GlobalHeader
+    {
+        background-color: rgb(25, 25, 25);
+        color: white;
+    }
+
+    .WebNav
+    {
+        background-color: rgba(25, 25, 25, 0.664);
+    }
+
+    .NavItem
+    {
+        color: white;
+    }
+
+    .MenuButton
+    {
+        background-image: url("../../media/hamburger-dark.png");
+    }
+
+    .MenuButtonClicked
+    {
+        background-image: url("../../media/hamburger-close-dark.png");
+    }
+}
+
 /***********************************************Desktop Layout****************************************************************/
 
 @media only screen and (min-width: 768px)
@@ -261,6 +316,7 @@
         align-items: center;
         background-color: inherit;
         margin-right: 30px;
+        overflow: unset;
     }
 
     .NavItem
@@ -284,14 +340,12 @@
 
     .UserIcon
     {
-        background-image: url("../../media/userLogo.png");
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
         width: 50px;
         height: 50px;
-        margin-left: 20px;
-        margin-right: 20px;
+        margin: 0px 20px 0px 20px;
     }
 
     #LoginRegPaneDesktop
@@ -302,6 +356,7 @@
         width: 200px;
         top: 60px;
         right: 0px;
+        animation: slide-down 0.4s ease-out;
     }
 
     .PaneHeading

@@ -8,7 +8,7 @@ function DashboardStaff()
 
     return (
     <div id="DashboardStaff" className="DashBoardBodyCommon">
-        <div className="DashboardHeading">Dashboard</div>
+        <div className="ContentHeading">Dashboard</div>
         <div className="DashboardContentCommon"></div>
     </div>);
 }

@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import { AuthContext } from "./AuthContext.jsx";
 import Login from "./Login.jsx";
+import "./Styles/Tools.css"
 
 function Tools() 
 {
@@ -9,7 +10,10 @@ function Tools()
 
     if(isAuth)
     {
-        return (<h1>Tools</h1>);
+        return (
+            <div id="Tools">
+                <div className="ContentHeading">Tools</div>
+            </div>);
     }
 
     return (<Login></Login>);

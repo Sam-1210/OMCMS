@@ -3,8 +3,9 @@
     display: block;
     width: 100%;
     height: 100%;
-    background-image: url("../../media/bg_mob.jpg");
-    background-size: cover;
+    background-color: rgb(255, 255, 255);
+    background-image: url("../../media/Arts/home_mobile.jpg");
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     overflow: auto;
@@ -25,7 +26,8 @@
 
 #Home h1
 {
-    color: rgb(255, 255, 255);
+    color: rgb(14, 145, 206);
+    text-shadow: 2px 3px rgb(0, 22, 43);
     margin-top: 0;
     margin-bottom: 0;
     font-size: 2.5em;
@@ -34,10 +36,14 @@
 
 #Home h4
 {
-    color: rgb(255, 215, 85);
+    color: rgb(252, 84, 42);
+    background-color: rgba(255, 255, 255, 0.514);
+    border-radius: 10px;
+    width: 100%;
+    padding: 5px 0px 5px 0px;
+    word-wrap: break-word;
     text-align: center;
-    margin-left: 50px;
-    margin-right: 50px;
+    text-shadow: 1px 1px rgb(105, 24, 4);
 }
 
 #HomeFooter
@@ -46,29 +52,51 @@
     overflow: auto;
 }
 
-.BlurBG
-{
-    background-color: rgba(0, 0, 0, 0.164);
+@media (prefers-color-scheme: dark) {
+    #Home
+    {
+        background-color: rgb(25, 25, 25);
+        background-image: url("../../media/Arts/home_mobile-dark.jpg");
+    }
+
+    #Home h4
+    {
+        color:rgb(248, 200, 69);
+        text-shadow: 1px 1px rgb(83, 61, 0);
+        background-color: rgba(65, 65, 65, 0.514);
+    }
 }
 
 @media only screen and (min-width: 768px)
 {
     #Home
     {
-        background-image: url("../../media/bg1.jpg");
+        background-color: rgb(255, 255, 255);
+        background-image: url("../../media/Arts/home_desktop.jpg");
         background-size: cover;
+        background-position: center;
     } 
     #Home h1
     {
-        color: rgb(255, 255, 255);
+        color: rgb(184, 0, 122);
         font-size: 4em;
     }
     #Home h4
     {
-        color: rgb(255, 215, 85);
+        background-color: rgba(61, 61, 61, 0.555);
+        padding: 5px 10px 5px 10px;
+        color: rgb(230, 255, 2);
+        text-shadow: -1px 1px  #000,
+        1px 1px #000,
+        1px -1px #000,
+        -1px -1px #000;
     }
-    .BlurBG
-    {
-        background-color: rgba(0, 0, 0, 0);
-    } 
+
+    @media (prefers-color-scheme: dark) {
+        #Home
+        {
+            background-color: rgb(25, 25, 25);
+            background-image: url("../../media/Arts/home_desktop-dark.jpg");
+        }
+    }
 }

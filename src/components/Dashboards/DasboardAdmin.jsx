@@ -121,7 +121,7 @@ class DashboardAdmin extends Component
 
         return (
             <div id="DashboardAdmin" className="DashBoardBodyCommon">
-                <div className="DashboardHeading">Dashboard</div>
+                <div className="ContentHeading">Dashboard</div>
                 <div className="DashboardContentCommon">
                     <div id="OrgSetupPallete">
                         <div>Welcome {this.state.org_name}</div>

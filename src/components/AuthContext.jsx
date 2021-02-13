@@ -34,24 +34,40 @@ class AuthContextProvider extends Component{
 
     registerUser = async (user) => 
     {
-        const register = await Axios.post('Register.php',{
-            fname:user.fname,
-            lname:user.lname,
-            email:user.email,
-            password:user.password,
-            authority:user.authority, 
-        });
-        return register.data;
+        try
+        {
+            const register = await Axios.post('Register.php',{
+                fname:user.fname,
+                lname:user.lname,
+                email:user.email,
+                password:user.password,
+                authority:user.authority, 
+            });
+            return register.data;
+        }
+        catch(error)
+        {
+            console.log(error);
+            return null;
+        }
     }
 
 
     loginUser = async (user) => 
     {
-        const login = await Axios.post('Login.php',{
-            email:user.email,
-            password:user.password
-        });
-        return login.data;
+        try
+        {
+            const login = await Axios.post('Login.php',{
+                email:user.email,
+                password:user.password
+            });
+            return login.data;
+        }
+        catch(error)
+        {
+            console.log(error);
+            return null;
+        }
     }
 
     isLoggedIn = async () => {
@@ -60,16 +76,21 @@ class AuthContextProvider extends Component{
         if(loginToken)
         {
             Axios.defaults.headers.common['Authorization'] = 'bearer '+loginToken;
-
-            const {data} = await Axios.get('AccountInfo.php');
-
-            if(data.success && data.user)
+            try 
             {
-                this.setState({
-                    ...this.state,
-                    isAuth:true,
-                    theUser:data.user
-                });
+                const {data} = await Axios.get('AccountInfo.php');
+
+                if(data.success && data.user)
+                {
+                    this.setState({
+                        ...this.state,
+                        isAuth:true,
+                        theUser:data.user
+                    });
+                }
+            
+            } catch (error) {
+                console.log(error);
             }
         }
     }
