@@ -48,7 +48,7 @@ class AuthContextProvider extends Component{
         catch(error)
         {
             console.log(error);
-            return null;
+            return {success:false, message:"Server Connection Failed"};
         }
     }
 
@@ -66,7 +66,7 @@ class AuthContextProvider extends Component{
         catch(error)
         {
             console.log(error);
-            return null;
+            return {success:false, token:null, message:"Server Connection Failed"};
         }
     }
 
