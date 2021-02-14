@@ -10,12 +10,51 @@
     background-image: url("../../media/Arts/about-mobile.jpg");
 }
 
+#AboutBody
+{
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    justify-content: space-between;
+}
+
+#AboutContent
+{
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    background-color: rgba(194, 194, 194, 0.575);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px 5px 20px 5px;
+}
+
+#AboutFooter
+{
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    font-size: 1.0em;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+
 @media (prefers-color-scheme: dark) 
 {
     #About
     {
         background-color: rgb(25, 25, 25);
         background-image: url("../../media/Arts/about-mobile-dark.jpg");
+    }
+
+    #AboutContent
+    {
+        background-color: rgba(0, 0, 0, 0.527);
+        color: rgb(255, 255, 255);  
+    }
+
+    #AboutFooter
+    {
+        color: rgb(255, 217, 2);
     }
 }
 
@@ -27,6 +66,17 @@
         background-size: contain;
         background-image: url("../../media/Arts/about-desktop.jpg");
 
+    }
+
+    #AboutContent
+    {
+        font-size: 1.1em;
+        margin: 40px 50px 40px 50px;
+    }
+
+    #AboutFooter
+    {
+        font-size: 1.3em;
     }
 
     @media (prefers-color-scheme: dark) 
