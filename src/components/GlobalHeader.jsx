@@ -6,14 +6,17 @@ import "./Styles/GlobalHeader.css"
 function HandleClick()
 {
     let MenuButton = document.getElementById("DrawerButton");
+    let BlankArea = document.getElementById("NavCloseArea");
     let NavBar = document.getElementById("GlobalNav");
         if(NavBar.className === "WebNav")
         {
+            BlankArea.className = "AreaVisible"
             NavBar.className += " MobileMenu";
             MenuButton.className += " MenuButtonClicked";
         }
         else
         {
+            BlankArea.className = "AreaHidden"
             NavBar.className = "WebNav";
             MenuButton.className = "MenuButton";
         }
@@ -22,13 +25,13 @@ function HandleClick()
 function HandleLogRegClick(ID)
 {
     let LogRegPane = document.getElementById(ID);
-        if(LogRegPane.className === "LoginRegPaneVisible")
+        if(LogRegPane.className === "LoginRegPaneNotVisible")
         {
-            LogRegPane.className = "LoginRegPaneNotVisible";
+            LogRegPane.className = "LoginRegPaneVisible";
         }
         else
         {
-            LogRegPane.className = "LoginRegPaneVisible";
+            LogRegPane.className = "LoginRegPaneNotVisible";
         }
 }
 
@@ -69,10 +72,14 @@ function GlobalHeader()
         <div id="MobileDrawer">
             <button id="DrawerButton" className="MenuButton" onClick={HandleClick}></button>
         </div>
-        <div id="WebTitle" onClick={function() {window.location.href = window.location.href.replace(window.location.href.substr(window.location.href.lastIndexOf('/')+1),'Home');}}>
+        <div id="WebTitle" onClick={function() {
+                window.location.href = window.location.href.replace(window.location.href.substr(
+                    window.location.href.lastIndexOf('/')+1),'Home');
+        }}>
             <div id="HeaderIcon"></div>
             <div id="HeaderTitle">OMCMS</div>
         </div>
+        <div id="NavCloseArea" className="AreaHidden" onClick={HandleClick}></div>
         <div id="GlobalNav" className="WebNav">
             <NavLink to="/Home" className="NavItem" onClick={HandleClick}>Home</NavLink>
             <NavLink to="/Dashboard" className="NavItem" onClick={HandleClick}>Dashboard</NavLink>
@@ -86,7 +93,7 @@ function GlobalHeader()
             </div>
         </div>
         <div id="MobileUser" 
-                onClick={ function(){document.getElementById("LoginRegPaneMobile").className = "LoginRegPaneVisible"; } }
+                onClick={ function(){document.getElementById("LoginRegPaneMobile").className = "LoginRegPaneVisible";} }
                 onMouseLeave= { function(){document.getElementById("LoginRegPaneMobile").className = "LoginRegPaneNotVisible";} }>
             <div className="UserIcon"></div>
             <LoginRegPane CompId="LoginRegPaneMobile"/>
