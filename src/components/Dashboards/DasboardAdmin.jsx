@@ -5,6 +5,15 @@ const Axios = axios.create({
     baseURL: 'http://localhost/omcms-server/',
 });
 
+function ToogleVisible(ElName) 
+{
+    let tmpEl = document.getElementById(ElName);
+    if(tmpEl.className==="PaletteVisible")
+        tmpEl.className="PaletteHidden";
+    else
+        tmpEl.className="PaletteVisible";
+}
+
 class DashboardAdmin extends Component
 {
     state = {
@@ -111,32 +120,51 @@ class DashboardAdmin extends Component
             successMsg = <div>{this.state.logs.successMsg}</div>;
         }
         
-        let z = [];
+        let StaffInfo = [], MemberInfo=[];
         let i = 0;
         for(let staffMem of this.state.staff_info)
         {
-            let x = <div key={i++}>{staffMem.fname} {staffMem.lname} {staffMem.email}</div>;
-            z = [...z, x];
+            let StaffInfoPalette = <tr key={i++}>
+                <td className="ColStaffName">{staffMem.fname} {staffMem.lname}</td> 
+                <td className="ColStaffEmail">{staffMem.email}</td>
+            </tr>;
+            StaffInfo = [...StaffInfo, StaffInfoPalette];
         }
 
         return (
             <div id="DashboardAdmin" className="DashBoardBodyCommon">
                 <div className="ContentHeading">Dashboard</div>
                 <div className="DashboardContentCommon">
-                    <div id="OrgSetupPallete">
-                        <div>Welcome {this.state.org_name}</div>
+                    <div id="OrgSetupPalette" className="DashboardPalette">
+                        <div className="DashboardSubheading1">Welcome {this.state.org_name}</div>
                         <form onSubmit={this.submitForm}>
                             {errorMsg}
                             {successMsg}
                             <label htmlFor="RenOrg">New Name </label>
-                            <input id="RenOrg" type="text" name="update_org_name" placeholder="Enter New Name" value={this.state.update_org_name} onChange={this.onChangeValue}/>
+                            <input id="RenOrg" type="text" name="update_org_name" placeholder={this.state.org_name} onChange={this.onChangeValue}/>
                             <button type="submit">Rename</button>
                         </form>
                     </div>
-                    <div>
-                        Manage Staff
-                        {z}
-                        {/* Also handle pending requests */}
+                    <div id="StaffPalette" className="DashboardPalette" onClick={()=>ToogleVisible("StaffList")}>
+                        <div className="DashboardSubheading1">List of Staff Members</div>
+                        <div className="DashboardSubheading2">Number of Staff Members: {StaffInfo.length}</div>
+                        <div id="StaffList" className="PaletteHidden">
+                            <table id="StaffInfoTable">
+                                <thead>
+                                    <tr>
+                                        <td className="ColStaffName">Name</td>
+                                        <td className="ColStaffEmail">Email</td>
+                                    </tr>
+                                </thead>
+                                <tbody>{StaffInfo}</tbody>
+                            </table>
+                        </div>
+                        {/* Also handle pending requests in tools */}
+                    </div>
+                    <div id="MemberPalette" className="DashboardPalette" onClick={()=>ToogleVisible("MemberList")}>
+                        <div className="DashboardSubheading1">List of Members</div>
+                        <div className="DashboardSubheading2">Number of Members: {StaffInfo.length}</div>
+                        <div id="MemberList" className="PaletteHidden">{MemberInfo}</div>
                     </div>
                 </div>
             </div>);

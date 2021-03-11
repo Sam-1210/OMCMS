@@ -50,12 +50,150 @@
     padding-top: 200px;
 }
 
-#OrgSetupPallete
+.DashboardPalette
 {
-    display: inline-block;
-    text-align: center;
+    margin: 20px 10px 20px 10px;
+    padding: 0px 10px 0px 10px;
     border-radius: 10px;
+}
+
+#OrgSetupPalette
+{
+    text-align: center;  
+    background-image: linear-gradient(to right, #870000 0%, #190A05  51%, #870000  100%);
+    background-size: 200%;
+}
+
+#StaffPalette
+{
+    text-align: left;
     background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+}
+
+#StaffEventsPalette
+{
+    text-align: left;
+    background: linear-gradient(90deg, #4bb793 0%, #047e22 100%);
+}
+
+#MemberEventsPalette
+{
+    text-align: left;
+    background: linear-gradient(90deg, #b5b74b 0%, #7c7e04 100%);
+}
+
+.EventHeading
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.EventHeadingButton
+{
+    background-color: rgba(255, 255, 255, 0);
+    background-image: url("../../media/AddEvent.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    outline: none;
+    border: 0;
+}
+
+.EventContainer
+{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(2px);
+    top: 83px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.CreateEventHidden
+{
+    display: none;
+}
+
+.CreateEventVisible
+{
+    display: block;
+}
+
+.EventPane
+{
+    position:fixed;
+    background-color: #077422;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -40%);
+    border-radius: 10px;
+}
+
+#StaffEventList
+{background-color: #047e22;}
+
+#MemberEventList
+{background-color: #047e22;}
+
+#StaffList table
+{
+    width: 100%;
+    background-color: rgb(93, 5, 134);
+    border-radius: 5px;
+    margin: 5px;
+}
+
+#StaffList thead td
+{
+    color: white;
+    background-color: teal;
+    text-align: center;
+}
+
+.ColStaffName
+{
+    width: 60%;
+    color:rgb(255, 255, 255);
+}
+
+.ColStaffEmail
+{
+    width: 40%;
+    color:white;
+}
+
+.PaletteVisible
+{
+    display: block;
+}
+
+.PaletteHidden
+{
+    display: none;
+}
+
+.DashboardSubheading1
+{
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.DashboardSubheading2
+{
+    color: rgb(255, 255, 255);
+    font-size: 1em;
+}
+
+.DashboardSubheading3
+{
+    color: rgb(255, 255, 255);
+    font-size: 0.8em;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -115,6 +253,11 @@
     .ContentHeading
     {
         font-size: 3em;
+    }
+
+    .EventPane
+    {
+        width: 500px;
     }
 
     @media (prefers-color-scheme: dark) {

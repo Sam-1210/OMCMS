@@ -23,8 +23,7 @@ class AuthContextProvider extends Component{
         this.isLoggedIn();
     }
 
-    logoutUser = () => 
-    {
+    logoutUser = () => {
         localStorage.removeItem('loginToken');
         this.setState({
             ...this.state,
@@ -32,8 +31,7 @@ class AuthContextProvider extends Component{
         })
     }
 
-    registerUser = async (user) => 
-    {
+    registerUser = async (user) => {
         try
         {
             const register = await Axios.post('Register.php',{
@@ -53,8 +51,7 @@ class AuthContextProvider extends Component{
     }
 
 
-    loginUser = async (user) => 
-    {
+    loginUser = async (user) => {
         try
         {
             const login = await Axios.post('Login.php',{
@@ -95,13 +92,42 @@ class AuthContextProvider extends Component{
         }
     }
 
+    ChangeName = async (UserName) => {
+        try
+        {
+            const {data} = await Axios.post('Setters/ChangeName.php',{
+                fname: UserName.fname,
+                lname: UserName.lname
+            });
+
+            if(data.success)
+            {
+                this.setState({
+                    ...this.state,
+                    theUser:{
+                        ...this.state.theUser,
+                        fname: UserName.fname,
+                        lname: UserName.lname
+                    }
+                });
+            }
+            return data;
+        }
+        catch(error)
+        {
+            console.log(error);
+            return {success:false, token:null, message:"Server Connection Failed"};
+        }
+    }
+
     render(){
         const contextValue = {
             rootState:this.state,
             isLoggedIn:this.isLoggedIn,
             registerUser:this.registerUser,
             loginUser:this.loginUser,
-            logoutUser:this.logoutUser
+            logoutUser:this.logoutUser,
+            ChangeName:this.ChangeName
         }
         return(
             <AuthContext.Provider value={contextValue}>
