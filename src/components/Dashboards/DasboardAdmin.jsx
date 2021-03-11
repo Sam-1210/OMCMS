@@ -159,7 +159,6 @@ class DashboardAdmin extends Component
                                 <tbody>{StaffInfo}</tbody>
                             </table>
                         </div>
-                        {/* Also handle pending requests in tools */}
                     </div>
                     <div id="MemberPalette" className="DashboardPalette" onClick={()=>ToogleVisible("MemberList")}>
                         <div className="DashboardSubheading1">List of Members</div>

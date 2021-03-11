@@ -177,12 +177,15 @@ class DashboardStaff extends Component
 
         let EventList = [];
         let i = 0;
-        for(let events of this.state.events_list)
+        for(let event of this.state.events_list)
         {
-            let EventPalette = <tr key={i++}>
-                <td className="ColStaffName">{events.title}</td> 
-                <td className="ColStaffEmail">{events.link}</td>
-            </tr>;
+            let tmp = event.link.substring(0,8);
+            if(tmp !== "https://")
+                event.link = "http://" + event.link;
+            let EventPalette = <div className="EventPalette" key={i++}>
+                <div className="DashboardSubheading1">{event.title}</div>
+                <a id="StartEventButton" href={event.link} rel="noreferrer" target="_blank">Start</a>
+            </div>;
             EventList = [...EventList, EventPalette];
         }
         if(!EventList.length)

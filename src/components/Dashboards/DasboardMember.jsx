@@ -153,18 +153,23 @@ class DashboardMember extends Component
         
         let EventList = [];
         let i = 0;
-        for(let events of this.state.events_list)
+        for(let event of this.state.events_list)
         {
-            let EventPalette = <tr key={i++}>
-                <td className="ColStaffName">{events.title}</td> 
-                <td className="ColStaffName">{events.fname}</td>
-                <td className="ColStaffName">{events.lname}</td>
-                <td className="ColStaffName">{events.email}</td>
-                <td className="ColStaffEmail">{events.link}</td>
-            </tr>;
+            let tmp = event.link.substring(0,8);
+            if(tmp !== "https://")
+            event.link = "http://" + event.link;
+            let EventPalette = <div className="EventPalette" key={i++}>
+                <div>
+                    <div className="DashboardSubheading1">{event.title}</div> 
+                    <div className="DashboardSubheading3">Organiser: {event.fname} {event.lname}</div> 
+                </div>
+                <div>
+                    <a id="StartEventButton" href={"mailto://"+event.email} rel="noreferrer" target="_blank">Contact</a>  
+                    <a id="StartEventButton" href={event.link} rel="noreferrer" target="_blank">Start</a>
+                </div>
+            </div>;
             EventList = [...EventList, EventPalette];
         }
-
         if(!EventList.length)
         {
             EventList.push(<div className="DashboardSubheading3" key="EmptyList">No Event<br/>Add One By Clicking (+) Button</div>)
