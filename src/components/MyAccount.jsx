@@ -215,10 +215,10 @@ class MyAccount extends Component
             OtherElements.push(
             <form key='1' className="MyAccountRow" onSubmit={this.submitChangeOrgName}>
                 <div className="RowLabel">Organisation Name</div>
-                <div className="FormInput">
-                    <input id="ChangeOrgName" className="FormInputBox" name="update_org_name" type="text" required 
+                <div className="ComplexForm">
+                    <input id="ChangeOrgName" className="ComplexInput" name="update_org_name" type="text" required 
                     placeholder={this.state.org_name} value={this.state.update_org_name} onChange={this.onChangeValue} />
-                    <button type="submit">Update</button>
+                    <button className="ComplexButton" type="submit">Update</button>
                 </div>
             </form>);
         }
@@ -228,19 +228,21 @@ class MyAccount extends Component
             OtherElements.push(
             <form key='2' className="MyAccountRow"  onSubmit={this.submitChangeOrgEmail}>
                 <div className="RowLabel">Organisation Email</div>
-                <div className="FormInput">
-                    <input id="AddOrg" className="FormInputBox" name="update_org_email" type="text" required 
+                <div className="ComplexForm">
+                    <input id="AddOrg" className="ComplexInput" name="update_org_email" type="text" required 
                     placeholder={this.state.org_email} value={this.state.update_org_email} onChange={this.onChangeValue} />
-                    <button type="submit">Add</button>
+                    <button className="ComplexButton" type="submit">Add</button>
                 </div>
             </form>);
         }
         
         return(
             <div id="MyAccount">
-                <div className="ContentHeading">MyAccount</div>
                 <div id="MyAccountBody">
-                    <div className="MyAccountLogger">                    
+                    <div id="MyAccountIcon"></div>
+                    <div id="MyAccountHeading">MyAccount</div>
+                    <hr/>
+                    <div id="MyAccountLogger">                    
                         {this.state.logs.successMsg}
                         {this.state.logs.errorMsg}
                     </div>
@@ -250,22 +252,22 @@ class MyAccount extends Component
                     </div>
                     <form className="MyAccountRow" onSubmit={this.submitChangeName}>
                         <label className="RowLabel">Name</label>
-                        <div className="FormInput">
-                            <input id="ChangeFname" className="FormInputBox" name="changed_fname" type="text" required 
+                        <div className="ComplexForm">
+                            <input id="ChangeFname" className="ComplexInput" name="changed_fname" type="text" required 
                             placeholder={this.state.fname} value={this.state.changed_fname} onChange={this.onChangeValue} />
-                            <input id="ChangeLname" className="FormInputBox" name="changed_lname" type="text" required 
+                            <input id="ChangeLname" className="ComplexInput" name="changed_lname" type="text" required 
                             placeholder={this.state.lname} value={this.state.changed_lname} onChange={this.onChangeValue} />
-                            <button type="submit">Update</button>
+                            <button className="ComplexButton" type="submit">Update</button>
                         </div>
                     </form>
                     <form className="MyAccountRow" onSubmit={this.submitChangePassword}>
                         <label className="RowLabel">Password</label>
-                        <div className="FormInput">
-                            <input id="ChangePass" className="FormInputBox" name="changed_password" type="password" required 
+                        <div className="ComplexForm">
+                            <input id="ChangePass" className="ComplexInput" name="changed_password" type="password" required 
                             placeholder="New Password" value={this.state.changed_password} onChange={this.onChangeValue} />
-                            <input id="ConfirmPass" className="FormInputBox" name="changed_confirm_password" type="password" required 
+                            <input id="ConfirmPass" className="ComplexInput" name="changed_confirm_password" type="password" required 
                             placeholder="Confirm New Password" value={this.state.changed_confirm_password} onChange={this.onChangeValue} />
-                            <button type="submit">Update</button>
+                            <button className="ComplexButton" type="submit">Update</button>
                         </div>
                     </form>
                     {OtherElements}

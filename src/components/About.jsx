@@ -16,7 +16,7 @@ function About()
                     With OMCMS All These Flaws Are Removed and A Simple Platform with Productivity Enhancing Features Is Introduced.
                 </div>
                 <div id="AboutFooter">
-                    The System Is Being Developed and Maintained By … Under Guidance Of … For ... 
+                    The System Is Being Developed and Maintained By Satyam Mishra Under Guidance Of Md. Anzar Ahmad For IGNOU BCSP064 Project. 
                 </div>
             </div>
         </div>);
