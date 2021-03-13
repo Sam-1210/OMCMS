@@ -10,6 +10,13 @@
     background-image: url("../../media/Arts/my-account-mobile.jpg");
 }
 
+#MyAccountBody
+{
+    background-color: rgb(97, 97, 97);
+    border-radius: 10px;
+    margin: 10px;
+}
+
 @media (prefers-color-scheme: dark) 
 {
     #MyAccount
@@ -27,6 +34,29 @@
         background-size: contain;
         background-image: url("../../media/Arts/my-account-desktop.jpg");
 
+    }
+
+    .MyAccountRow
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .RowLabel
+    {
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+
+    .RowTextData
+    {
+        color: rgb(204, 220, 248);
+        font-weight: bold;
+        font-size: 1.5em;
+        font-style: italic;
     }
 
     @media (prefers-color-scheme: dark) 

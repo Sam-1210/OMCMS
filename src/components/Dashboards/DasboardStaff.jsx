@@ -107,14 +107,27 @@ class DashboardStaff extends Component
 
     componentDidMount()
     {
+        this.GetOrganisationName = this.context.GetOrganisationName;
+        this.GetOrganisationName().then(Org => { 
+            if(Org)
+            this.setState({...this.state,
+                org_name: Org.Name,
+                org_email: Org.Email
+            });  
+        })
         this.GetEventsList();
-        this.GetOrganisationName();
-        const {theUser} = this.context.rootState;
+    
+        const {theUser, theOrganisation} = this.context.rootState;
         if(theUser)
             this.setState({...this.state,
                 fname: theUser.fname,
                 lname: theUser.lname,
                 email: theUser.email
+            });
+        if(theOrganisation)
+            this.setState({...this.state,
+                org_name: theOrganisation.Name,
+                org_email: theOrganisation.Email
             });
     }
 
@@ -135,21 +148,6 @@ class DashboardStaff extends Component
                     events_list:[...data.Payload]
                 });
             }
-        }
-    }
-
-    GetOrganisationName = async (Org) => {
-        const loginToken = localStorage.getItem('loginToken');
-        if(loginToken)
-        {
-            Axios.defaults.headers.common['Authorization'] = 'bearer ' + loginToken;
-            const {data}= await Axios.get('Getters/GetOrgName.php');
-            this.setState({
-                ...this.state,
-                org_name:data.organisation_name,
-                org_email:data.organisation_email
-            })
-            return data.organisation_name;
         }
     }
 

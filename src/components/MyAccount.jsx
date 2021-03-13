@@ -17,7 +17,13 @@ class MyAccount extends Component
         email: '',
         changed_fname:'',
         changed_lname:'',
+        changed_password:'',
+        changed_confirm_password:'',
         authority:'',
+        org_name:'',
+        update_org_name:'',
+        org_email:'',
+        update_org_email:'',
         logs: {errMsg:'', scsMsg:''}
     }
 
@@ -32,8 +38,20 @@ class MyAccount extends Component
                 email: theUser.email,
                 authority: theUser.authority
             });
+        if(theUser.authority === 'admin' || theUser.authority === 'staff')
+        {
+            
+            this.GetOrganisationName = this.context.GetOrganisationName;
+            this.GetOrganisationName().then(Org => { 
+                if(Org)
+                this.setState({...this.state,
+                    org_name: Org.Name,
+                    org_email: Org.Email
+                });  
+            });
+        }
     }
-
+    /***************************************Change Organization Name***********************************************************/
     SetOrganisationName = async (OrgName) => {
         const loginToken = localStorage.getItem('loginToken');
 
@@ -48,8 +66,7 @@ class MyAccount extends Component
         return null;
     }
 
-    submitForm = async (event) => 
-    {
+    submitChangeOrgName = async (event) => {
         event.preventDefault();
         const data = await this.SetOrganisationName(this.state.update_org_name);
         if(data.success)
@@ -72,7 +89,88 @@ class MyAccount extends Component
             });
         }
     }
+    /***************************************Change Organization Email***********************************************************/
+    SetOrganisationEmail = async (OrgEmail) => {
+        const loginToken = localStorage.getItem('loginToken');
 
+        if(loginToken)
+        {
+            Axios.defaults.headers.common['Authorization'] = 'bearer ' + loginToken;
+            const UpdateLog = await Axios.post('Setters/SetOrgEmail.php',{
+                organisation_email: OrgEmail
+            });
+            return UpdateLog.data;
+        }
+        return null;
+    }
+
+    submitChangeOrgEmail = async (event) => {
+        event.preventDefault();
+        const data = await this.SetOrganisationEmail(this.state.update_org_email);
+        if(data.success)
+        {
+            this.setState({...this.state, 
+                org_email: this.state.update_org_email, 
+                update_org_email:'',
+                logs : {...this.state.logs,
+                    successMsg:data.message,
+                    errorMsg:''}
+            });
+        }
+        else
+        {
+            this.setState({
+                ...this.state,
+                logs : {...this.state.logs,
+                    successMsg:'',
+                    errorMsg:data.message}
+            });
+        }
+    }
+    /**************************************Change User Password********************************************************/
+    SetNewPassword = async (Req) => {
+        const loginToken = localStorage.getItem('loginToken');
+
+        if(loginToken)
+        {
+            Axios.defaults.headers.common['Authorization'] = 'bearer ' + loginToken;
+            const UpdateLog = await Axios.post('Setters/SetNewPassword.php',{
+                Password: Req.password,
+                ConfrimPassword: Req.confirmPassword,
+            });
+            return UpdateLog.data;
+        }
+        return null;
+    }
+
+    submitChangePassword = async (event) => 
+    {
+        event.preventDefault();
+        const data = await this.SetNewPassword({
+            password:this.state.changed_password,
+            confirmPassword:this.state.changed_confirm_password
+        });
+        if(data.success)
+        {
+            this.setState({...this.state, 
+                changed_password:'',
+                changed_confirm_password:'',
+                logs : {...this.state.logs,
+                    successMsg:data.message,
+                    errorMsg:''}
+            });
+        }
+        else
+        {
+            this.setState({
+                ...this.state,
+                logs : {...this.state.logs,
+                    successMsg:'',
+                    errorMsg:data.message}
+            });
+        }
+    }
+    /***************************************Change User Name***********************************************************/
     submitChangeName = async (event) => 
     {
         event.preventDefault();
@@ -85,16 +183,18 @@ class MyAccount extends Component
                 lname: this.state.changed_lname,
                 changed_fname:'',
                 changed_lname:'',
-                successMsg:data.message,
-                errorMsg:''
+                logs : {...this.state.logs,
+                    successMsg:data.message,
+                    errorMsg:''}
             });
         }
         else
         {
             this.setState({
                 ...this.state,
-                successMsg:'',
-                errorMsg:data.message
+                logs : {...this.state.logs,
+                    successMsg:'',
+                    errorMsg:data.message}
             });
         }
     }
@@ -106,31 +206,70 @@ class MyAccount extends Component
             [e.target.name]:e.target.value
         });
     }
-
+    /***************************************Render***********************************************************/
     render()
-    {
-        let OrgName = '';
+    {       
+        let OtherElements = [];
         if(this.state.authority === 'admin')
-            OrgName = 'OMCMS'; ///get and set state.
+        {
+            OtherElements.push(
+            <form key='1' className="MyAccountRow" onSubmit={this.submitChangeOrgName}>
+                <div className="RowLabel">Organisation Name</div>
+                <div className="FormInput">
+                    <input id="ChangeOrgName" className="FormInputBox" name="update_org_name" type="text" required 
+                    placeholder={this.state.org_name} value={this.state.update_org_name} onChange={this.onChangeValue} />
+                    <button type="submit">Update</button>
+                </div>
+            </form>);
+        }
+
+        if(this.state.authority === 'staff')
+        {
+            OtherElements.push(
+            <form key='2' className="MyAccountRow"  onSubmit={this.submitChangeOrgEmail}>
+                <div className="RowLabel">Organisation Email</div>
+                <div className="FormInput">
+                    <input id="AddOrg" className="FormInputBox" name="update_org_email" type="text" required 
+                    placeholder={this.state.org_email} value={this.state.update_org_email} onChange={this.onChangeValue} />
+                    <button type="submit">Add</button>
+                </div>
+            </form>);
+        }
         
         return(
             <div id="MyAccount">
                 <div className="ContentHeading">MyAccount</div>
-                <div className="MyAccountLogger">                    
-                    {this.state.successMsg}
-                    {this.state.errorMsg}
-                </div>
-                <form onSubmit={this.submitChangeName}>
-                    <div className="InputContainer">
-                        <label className="FormLabels">Name : </label>
-                        <input id="ChangeFname" className="FormInputBox" name="changed_fname" type="text" required placeholder={this.state.fname} onChange={this.onChangeValue} />
-                        <input id="ChangeLname" className="FormInputBox" name="changed_lname" type="text" required placeholder={this.state.lname} onChange={this.onChangeValue} />
+                <div id="MyAccountBody">
+                    <div className="MyAccountLogger">                    
+                        {this.state.logs.successMsg}
+                        {this.state.logs.errorMsg}
                     </div>
-                    <button type="submit">Update Name</button>
-                </form>
-                <div>Email : {this.state.email}</div>
-                {OrgName}
-                <div onClick={this.submitChangeName}>hii</div>
+                    <div className="MyAccountRow">
+                        <div className="RowLabel">Email</div>
+                        <div className="RowTextData">{this.state.email}</div>
+                    </div>
+                    <form className="MyAccountRow" onSubmit={this.submitChangeName}>
+                        <label className="RowLabel">Name</label>
+                        <div className="FormInput">
+                            <input id="ChangeFname" className="FormInputBox" name="changed_fname" type="text" required 
+                            placeholder={this.state.fname} value={this.state.changed_fname} onChange={this.onChangeValue} />
+                            <input id="ChangeLname" className="FormInputBox" name="changed_lname" type="text" required 
+                            placeholder={this.state.lname} value={this.state.changed_lname} onChange={this.onChangeValue} />
+                            <button type="submit">Update</button>
+                        </div>
+                    </form>
+                    <form className="MyAccountRow" onSubmit={this.submitChangePassword}>
+                        <label className="RowLabel">Password</label>
+                        <div className="FormInput">
+                            <input id="ChangePass" className="FormInputBox" name="changed_password" type="password" required 
+                            placeholder="New Password" value={this.state.changed_password} onChange={this.onChangeValue} />
+                            <input id="ConfirmPass" className="FormInputBox" name="changed_confirm_password" type="password" required 
+                            placeholder="Confirm New Password" value={this.state.changed_confirm_password} onChange={this.onChangeValue} />
+                            <button type="submit">Update</button>
+                        </div>
+                    </form>
+                    {OtherElements}
+                </div>
             </div>
         );
     }   

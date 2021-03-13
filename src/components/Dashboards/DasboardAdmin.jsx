@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { AuthContext } from "../AuthContext.jsx";
 import axios from 'axios'
 import ContactIco from "../../media/contact.png"
 
@@ -8,6 +9,8 @@ const Axios = axios.create({
 
 class DashboardAdmin extends Component
 {
+    static contextType = AuthContext;
+
     state = {
         org_name: '',
         logs: {errMsg:'', scsMsg:''},
@@ -16,22 +19,14 @@ class DashboardAdmin extends Component
 
     componentDidMount()
     {
-        this.GetOrganisationName();
+        this.GetOrganisationName = this.context.GetOrganisationName;
+        this.GetOrganisationName().then(Org => { 
+            if(Org)
+            this.setState({...this.state,
+                org_name: Org.Name
+            });  
+        })
         this.GetStaffDetails();
-    }
-
-    GetOrganisationName = async (Org) => {
-        const loginToken = localStorage.getItem('loginToken');
-        if(loginToken)
-        {
-            Axios.defaults.headers.common['Authorization'] = 'bearer ' + loginToken;
-            const {data}= await Axios.get('Getters/GetOrgName.php');
-            this.setState({
-                ...this.state,
-                org_name:data.organisation_name
-            })
-            return data.organisation_name;
-        }
     }
 
     GetStaffDetails = async (Org) => {

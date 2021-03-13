@@ -92,6 +92,23 @@ class AuthContextProvider extends Component{
         }
     }
 
+    GetOrganisationName = async () => {
+        const loginToken = localStorage.getItem('loginToken');
+        if(loginToken)
+        {
+            try
+            {
+                Axios.defaults.headers.common['Authorization'] = 'bearer ' + loginToken;
+                const {data}= await Axios.get('Getters/GetOrgName.php');
+                return {Name:data.organisation_name, Email:data.organisation_email};
+            }
+            catch(error)
+            {
+                return null;
+            }
+        }
+    }
+
     ChangeName = async (UserName) => {
         try
         {
@@ -127,6 +144,7 @@ class AuthContextProvider extends Component{
             registerUser:this.registerUser,
             loginUser:this.loginUser,
             logoutUser:this.logoutUser,
+            GetOrganisationName:this.GetOrganisationName,
             ChangeName:this.ChangeName
         }
         return(
