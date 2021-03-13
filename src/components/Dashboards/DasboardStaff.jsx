@@ -183,8 +183,10 @@ class DashboardStaff extends Component
             if(tmp !== "https://")
                 event.link = "http://" + event.link;
             let EventPalette = <div className="EventPalette" key={i++}>
-                <div className="DashboardSubheading1">{event.title}</div>
-                <a id="StartEventButton" href={event.link} rel="noreferrer" target="_blank">Start</a>
+                <div className="DashboardSubheading1 EventPaletteHeader">{event.title}</div>
+                <div className="EventPaletteFooter">
+                    <a id="StartEventButton" className="EventButton" href={event.link} rel="noreferrer" target="_blank">Start</a>
+                </div>
             </div>;
             EventList = [...EventList, EventPalette];
         }
@@ -197,24 +199,24 @@ class DashboardStaff extends Component
             <div id="DashboardStaff" className="DashBoardBodyCommon">
                 <div className="ContentHeading">Dashboard</div>
                 <div className="DashboardContentCommon">
-                    <div id="OrgSetupPalette" className="DashboardPalette">
+                    <div id="StaffInfoPalette" className="DashboardPalette">
                         {errorMsg}
                         {successMsg}
-                        <div className="DashboardSubheading1">Welcome {this.state.fname}</div>
-                        <div className="DashboardSubheading2">Info : {this.state.fname} {this.state.lname}</div>
-                        <div className="DashboardSubheading2">Institute : {this.state.org_name} {this.state.org_email}</div>
+                        <div className="DashboardSubheading1">Welcome</div>
+                        <div className="DashboardSubheading1">{this.state.fname} {this.state.lname}</div>
+                        <div className="DashboardSubheading2">@{this.state.org_name}</div>
                     </div>
                     <div id="StaffEventsPalette" className="DashboardPalette">
-                        <div className="EventHeading">
+                        <div className="EventHeader">
                             <div className="DashboardSubheading1">Events</div>
-                            <button className="EventHeadingButton" onClick={()=>{
+                            <button className="EventHeaderButton" onClick={()=>{
                                 if(document.getElementById("NewEventContainer"))
                                     document.getElementById("NewEventContainer").className="EventContainer CreateEventVisible";}
                             }/>
                             <NewEvent handle={this.childCallback}/>
                         </div>
                         <hr/>
-                        <div id="StaffEventList">{EventList}</div>
+                        <div id="StaffEventList" className="EventList">{EventList}</div>
                     </div>
                 </div>
             </div>);

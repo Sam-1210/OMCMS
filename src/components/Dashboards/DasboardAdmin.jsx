@@ -135,7 +135,7 @@ class DashboardAdmin extends Component
             <div id="DashboardAdmin" className="DashBoardBodyCommon">
                 <div className="ContentHeading">Dashboard</div>
                 <div className="DashboardContentCommon">
-                    <div id="OrgSetupPalette" className="DashboardPalette">
+                    <div id="OrgInfoPalette" className="DashboardPalette">
                         <div className="DashboardSubheading1">Welcome {this.state.org_name}</div>
                         <form onSubmit={this.submitForm}>
                             {errorMsg}
@@ -145,7 +145,7 @@ class DashboardAdmin extends Component
                             <button type="submit">Rename</button>
                         </form>
                     </div>
-                    <div id="StaffPalette" className="DashboardPalette" onClick={()=>ToogleVisible("StaffList")}>
+                    <div id="StaffDetailsPalette" className="DashboardPalette" onClick={()=>ToogleVisible("StaffList")}>
                         <div className="DashboardSubheading1">List of Staff Members</div>
                         <div className="DashboardSubheading2">Number of Staff Members: {StaffInfo.length}</div>
                         <div id="StaffList" className="PaletteHidden">

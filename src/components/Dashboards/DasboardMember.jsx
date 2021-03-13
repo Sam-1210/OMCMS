@@ -1,6 +1,7 @@
 import React, {useState, Component} from 'react'
 import { AuthContext } from "../AuthContext.jsx";
 import axios from 'axios'
+import ContactIco from "../../media/contact.png"
 
 const Axios = axios.create({ 
     baseURL: 'http://localhost/omcms-server/',
@@ -159,13 +160,15 @@ class DashboardMember extends Component
             if(tmp !== "https://")
             event.link = "http://" + event.link;
             let EventPalette = <div className="EventPalette" key={i++}>
-                <div>
+                <div className="EventPaletteHeader">
                     <div className="DashboardSubheading1">{event.title}</div> 
                     <div className="DashboardSubheading3">Organiser: {event.fname} {event.lname}</div> 
                 </div>
-                <div>
-                    <a id="StartEventButton" href={"mailto://"+event.email} rel="noreferrer" target="_blank">Contact</a>  
-                    <a id="StartEventButton" href={event.link} rel="noreferrer" target="_blank">Start</a>
+                <div className="EventPaletteFooter">
+                    <a id="ContactStaffButton" className="EventButton" href={"mailto://"+event.email} rel="noreferrer" target="_blank">
+                        <img id="ContactStaffIco" src={ContactIco} alt="Contact"/>
+                    </a>  
+                    <a id="JoinEventButton" className="EventButton" href={event.link} rel="noreferrer" target="_blank">Start</a>
                 </div>
             </div>;
             EventList = [...EventList, EventPalette];
@@ -179,23 +182,23 @@ class DashboardMember extends Component
             <div id="DashboardMember" className="DashBoardBodyCommon">
                 <div className="ContentHeading">Dashboard</div>
                 <div className="DashboardContentCommon">
-                    <div id="OrgSetupPalette" className="DashboardPalette">
+                    <div id="MemberInfoPalette" className="DashboardPalette">
                         {errorMsg}
                         {successMsg}
-                        <div className="DashboardSubheading1">Welcome {this.state.fname}</div>
-                        <div className="DashboardSubheading2">Info : {this.state.fname} {this.state.lname}</div>
+                        <div className="DashboardSubheading1">Welcome</div>
+                        <div className="DashboardSubheading1">{this.state.fname} {this.state.lname}</div>
                     </div>
                     <div id="MemberEventsPalette" className="DashboardPalette">
-                        <div className="EventHeading">
+                        <div className="EventHeader">
                             <div className="DashboardSubheading1">Events</div>
-                            <button className="EventHeadingButton" onClick={()=>{
+                            <button className="EventHeaderButton" onClick={()=>{
                                     if(document.getElementById("AddEventContainer"))
                                     document.getElementById("AddEventContainer").className="EventContainer CreateEventVisible";}
                             }/>
                             <AddEvent handle={this.childCallback}/>
                         </div>
                         <hr/>
-                        <div id="MemberEventList">{EventList}</div>
+                        <div id="MemberEventList" className="EventList">{EventList}</div>
                     </div>
                 </div>
             </div>);
