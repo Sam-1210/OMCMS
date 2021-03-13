@@ -200,11 +200,11 @@ class DashboardStaff extends Component
                 <div className="ContentHeading">Dashboard</div>
                 <div className="DashboardContentCommon">
                     <div id="StaffInfoPalette" className="DashboardPalette">
-                        {errorMsg}
-                        {successMsg}
                         <div className="DashboardSubheading1">Welcome</div>
                         <div className="DashboardSubheading1">{this.state.fname} {this.state.lname}</div>
                         <div className="DashboardSubheading2">@{this.state.org_name}</div>
+                        {errorMsg}
+                        {successMsg}
                     </div>
                     <div id="StaffEventsPalette" className="DashboardPalette">
                         <div className="EventHeader">

@@ -183,10 +183,10 @@ class DashboardMember extends Component
                 <div className="ContentHeading">Dashboard</div>
                 <div className="DashboardContentCommon">
                     <div id="MemberInfoPalette" className="DashboardPalette">
-                        {errorMsg}
-                        {successMsg}
                         <div className="DashboardSubheading1">Welcome</div>
                         <div className="DashboardSubheading1">{this.state.fname} {this.state.lname}</div>
+                        {errorMsg}
+                        {successMsg}
                     </div>
                     <div id="MemberEventsPalette" className="DashboardPalette">
                         <div className="EventHeader">

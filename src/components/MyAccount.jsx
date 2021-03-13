@@ -1,6 +1,11 @@
 import React, { Component} from 'react'
 import { AuthContext } from "./AuthContext.jsx";
+import axios from 'axios'
 import "./Styles/MyAccount.css"
+
+const Axios = axios.create({ 
+    baseURL: 'http://localhost/omcms-server/',
+});
 
 class MyAccount extends Component
 {
@@ -27,6 +32,45 @@ class MyAccount extends Component
                 email: theUser.email,
                 authority: theUser.authority
             });
+    }
+
+    SetOrganisationName = async (OrgName) => {
+        const loginToken = localStorage.getItem('loginToken');
+
+        if(loginToken)
+        {
+            Axios.defaults.headers.common['Authorization'] = 'bearer ' + loginToken;
+            const UpdateLog = await Axios.post('Setters/SetOrgName.php',{
+                organisation_name: OrgName
+            });
+            return UpdateLog.data;
+        }
+        return null;
+    }
+
+    submitForm = async (event) => 
+    {
+        event.preventDefault();
+        const data = await this.SetOrganisationName(this.state.update_org_name);
+        if(data.success)
+        {
+            this.setState({...this.state, 
+                org_name: this.state.update_org_name, 
+                update_org_name:'',
+                logs : {...this.state.logs,
+                    successMsg:data.message,
+                    errorMsg:''}
+            });
+        }
+        else
+        {
+            this.setState({
+                ...this.state,
+                logs : {...this.state.logs,
+                    successMsg:'',
+                    errorMsg:data.message}
+            });
+        }
     }
 
     submitChangeName = async (event) => 

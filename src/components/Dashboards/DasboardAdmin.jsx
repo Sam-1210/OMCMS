@@ -1,24 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import ContactIco from "../../media/contact.png"
 
 const Axios = axios.create({ 
     baseURL: 'http://localhost/omcms-server/',
 });
 
-function ToogleVisible(ElName) 
-{
-    let tmpEl = document.getElementById(ElName);
-    if(tmpEl.className==="PaletteVisible")
-        tmpEl.className="PaletteHidden";
-    else
-        tmpEl.className="PaletteVisible";
-}
-
 class DashboardAdmin extends Component
 {
     state = {
         org_name: '',
-        update_org_name:'',
         logs: {errMsg:'', scsMsg:''},
         staff_info:[]
     }
@@ -59,51 +50,12 @@ class DashboardAdmin extends Component
         }
     }
 
-    SetOrganisationName = async (OrgName) => {
-        const loginToken = localStorage.getItem('loginToken');
-
-        if(loginToken)
-        {
-            Axios.defaults.headers.common['Authorization'] = 'bearer ' + loginToken;
-            const UpdateLog = await Axios.post('Setters/SetOrgName.php',{
-                organisation_name: OrgName
-            });
-            return UpdateLog.data;
-        }
-        return null;
-    }
-
     onChangeValue = (e) => 
     {
         this.setState({
             ...this.state,
             [e.target.name]:e.target.value
         });
-    }
-
-    submitForm = async (event) => 
-    {
-        event.preventDefault();
-        const data = await this.SetOrganisationName(this.state.update_org_name);
-        if(data.success)
-        {
-            this.setState({...this.state, 
-                org_name: this.state.update_org_name, 
-                update_org_name:'',
-                logs : {...this.state.logs,
-                    successMsg:data.message,
-                    errorMsg:''}
-            });
-        }
-        else
-        {
-            this.setState({
-                ...this.state,
-                logs : {...this.state.logs,
-                    successMsg:'',
-                    errorMsg:data.message}
-            });
-        }
     }
 
     render()
@@ -120,15 +72,25 @@ class DashboardAdmin extends Component
             successMsg = <div>{this.state.logs.successMsg}</div>;
         }
         
-        let StaffInfo = [], MemberInfo=[];
-        let i = 0;
+        let StaffInfo = [];
+        let i = 1;
         for(let staffMem of this.state.staff_info)
         {
-            let StaffInfoPalette = <tr key={i++}>
-                <td className="ColStaffName">{staffMem.fname} {staffMem.lname}</td> 
-                <td className="ColStaffEmail">{staffMem.email}</td>
-            </tr>;
+            let StaffInfoPalette = <div key={i++} className="StaffListRow">
+                <div id="StaffMemDet">
+                    <div id="StaffIcon"></div>
+                    <div id="StaffName"  className="DashboardSubheading2">{staffMem.fname} {staffMem.lname}</div>
+                </div>
+                <a id="ContactStaffButton" className="EventButton" href={"mailto://"+staffMem.email} rel="noreferrer" target="_blank">
+                        <img id="ContactStaffIco" src={ContactIco} alt="Contact"/>
+                </a>
+            </div>;
             StaffInfo = [...StaffInfo, StaffInfoPalette];
+        }
+
+        if(!StaffInfo.length)
+        {
+            StaffInfo.push(<div className="DashboardSubheading3" key="EmptyList">No Member is Registered with Your Organisation</div>)
         }
 
         return (
@@ -136,34 +98,19 @@ class DashboardAdmin extends Component
                 <div className="ContentHeading">Dashboard</div>
                 <div className="DashboardContentCommon">
                     <div id="OrgInfoPalette" className="DashboardPalette">
-                        <div className="DashboardSubheading1">Welcome {this.state.org_name}</div>
-                        <form onSubmit={this.submitForm}>
-                            {errorMsg}
-                            {successMsg}
-                            <label htmlFor="RenOrg">New Name </label>
-                            <input id="RenOrg" type="text" name="update_org_name" placeholder={this.state.org_name} onChange={this.onChangeValue}/>
-                            <button type="submit">Rename</button>
-                        </form>
+                        <div className="DashboardSubheading1">Welcome<br/>{this.state.org_name}</div>
+                        {errorMsg}
+                        {successMsg}
                     </div>
-                    <div id="StaffDetailsPalette" className="DashboardPalette" onClick={()=>ToogleVisible("StaffList")}>
-                        <div className="DashboardSubheading1">List of Staff Members</div>
-                        <div className="DashboardSubheading2">Number of Staff Members: {StaffInfo.length}</div>
-                        <div id="StaffList" className="PaletteHidden">
-                            <table id="StaffInfoTable">
-                                <thead>
-                                    <tr>
-                                        <td className="ColStaffName">Name</td>
-                                        <td className="ColStaffEmail">Email</td>
-                                    </tr>
-                                </thead>
-                                <tbody>{StaffInfo}</tbody>
-                            </table>
+                    <div id="StaffDetailsPalette" className="DashboardPalette">
+                        <div>
+                            <div className="DashboardSubheading1">List of Staff Members</div>
+                            <div className="DashboardSubheading3">Number of Staff Members: {StaffInfo.length}</div>
+                            <hr/>
                         </div>
-                    </div>
-                    <div id="MemberPalette" className="DashboardPalette" onClick={()=>ToogleVisible("MemberList")}>
-                        <div className="DashboardSubheading1">List of Members</div>
-                        <div className="DashboardSubheading2">Number of Members: {StaffInfo.length}</div>
-                        <div id="MemberList" className="PaletteHidden">{MemberInfo}</div>
+                        <div id="StaffList"  className="EventList">
+                            {StaffInfo}
+                        </div>
                     </div>
                 </div>
             </div>);
