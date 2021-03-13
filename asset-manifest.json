@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/OMCMS/static/css/main.bcbb4461.chunk.css",
-    "main.js": "/OMCMS/static/js/main.3cffdedb.chunk.js",
-    "main.js.map": "/OMCMS/static/js/main.3cffdedb.chunk.js.map",
+    "main.css": "/OMCMS/static/css/main.52800090.chunk.css",
+    "main.js": "/OMCMS/static/js/main.19b430cc.chunk.js",
+    "main.js.map": "/OMCMS/static/js/main.19b430cc.chunk.js.map",
     "runtime-main.js": "/OMCMS/static/js/runtime-main.79b4d0b3.js",
     "runtime-main.js.map": "/OMCMS/static/js/runtime-main.79b4d0b3.js.map",
-    "static/js/2.47de1d8f.chunk.js": "/OMCMS/static/js/2.47de1d8f.chunk.js",
-    "static/js/2.47de1d8f.chunk.js.map": "/OMCMS/static/js/2.47de1d8f.chunk.js.map",
+    "static/js/2.fd1e9ced.chunk.js": "/OMCMS/static/js/2.fd1e9ced.chunk.js",
+    "static/js/2.fd1e9ced.chunk.js.map": "/OMCMS/static/js/2.fd1e9ced.chunk.js.map",
     "static/js/3.94f180ce.chunk.js": "/OMCMS/static/js/3.94f180ce.chunk.js",
     "static/js/3.94f180ce.chunk.js.map": "/OMCMS/static/js/3.94f180ce.chunk.js.map",
     "index.html": "/OMCMS/index.html",
-    "static/css/main.bcbb4461.chunk.css.map": "/OMCMS/static/css/main.bcbb4461.chunk.css.map",
-    "static/js/2.47de1d8f.chunk.js.LICENSE.txt": "/OMCMS/static/js/2.47de1d8f.chunk.js.LICENSE.txt",
+    "static/css/main.52800090.chunk.css.map": "/OMCMS/static/css/main.52800090.chunk.css.map",
+    "static/js/2.fd1e9ced.chunk.js.LICENSE.txt": "/OMCMS/static/js/2.fd1e9ced.chunk.js.LICENSE.txt",
     "static/media/GlobalHeader.css": "/OMCMS/static/media/WebIcon.06f306b4.png",
     "static/media/About.css": "/OMCMS/static/media/about-mobile.5b776ddc.jpg",
+    "static/media/contact.ab51eaef.png": "/OMCMS/static/media/contact.ab51eaef.png",
     "static/media/Dashboard.css": "/OMCMS/static/media/dashboard-staff-mobile.7e5d48c4.jpg",
     "static/media/home.css": "/OMCMS/static/media/home_mobile.94740127.jpg",
     "static/media/Login.css": "/OMCMS/static/media/login-mobile.a2ad5e7c.jpg",
@@ -23,8 +24,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.79b4d0b3.js",
-    "static/js/2.47de1d8f.chunk.js",
-    "static/css/main.bcbb4461.chunk.css",
-    "static/js/main.3cffdedb.chunk.js"
+    "static/js/2.fd1e9ced.chunk.js",
+    "static/css/main.52800090.chunk.css",
+    "static/js/main.19b430cc.chunk.js"
   ]
 }
