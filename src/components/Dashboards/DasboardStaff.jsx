@@ -182,6 +182,7 @@ class DashboardStaff extends Component
                 event.link = "http://" + event.link;
             let EventPalette = <div className="EventPalette" key={i++}>
                 <div className="DashboardSubheading1 EventPaletteHeader">{event.title}</div>
+                <div className="DashboardSubheading3 EventPaletteHeader">Organiser ID: {event.s_id}<br/>Event ID: {event.e_id}</div>
                 <div className="EventPaletteFooter">
                     <a id="StartEventButton" className="EventButton" href={event.link} rel="noreferrer" target="_blank">Start</a>
                 </div>
