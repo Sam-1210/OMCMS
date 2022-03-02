@@ -13,6 +13,7 @@ function Tools()
         return (
             <div id="Tools">
                 <div className="ContentHeading">Tools</div>
+                <div>Tools are in development right now, will be available with next releases.</div>
             </div>);
     }
 
